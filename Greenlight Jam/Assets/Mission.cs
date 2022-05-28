@@ -1,11 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.UI;
 public class Mission : MonoBehaviour
 {
-    string title = "Mission", giver = "Captain Ash";
+    public string title
+	{
+		get
+		{
+            string Title = "";
+            foreach(Mission_Component comp in components)
+			{
+                string part = comp.title;
+                if(Title != "")
+				{
+                    Title += "\\n";
+				}
+                Title += part;
+			}
+            Title = Title.Replace("\\n", "\n");
+            return Title;
+		}
+	}
+    [SerializeField]
     bool isRequired;
+    [SerializeField]
+    bool isTaken;
+    GameObject button;
+    Locked_Panel lockPanel;
     bool isComplete
 	{
 		get
@@ -18,12 +41,13 @@ public class Mission : MonoBehaviour
             return true;
 		}
 	}
-    Mission_Manager manager;
+
     List<Mission_Component> components;
 
-	private void Start()
+	private void Awake()
 	{
-        manager = Mission_Manager.Instance;
+        button = gameObject.transform.Find("Button").gameObject;
+        lockPanel = gameObject.GetComponentInChildren<Locked_Panel>();
     }
 
 	private class Mission_Component
@@ -42,33 +66,71 @@ public class Mission : MonoBehaviour
 		{
             required = requiredAmount;
             item = itemName;
+            if (required > 1)
+            { 
+                item = item + "s";
+            }
+        }
+
+        public string title 
+        {
+            get {
+
+                return required + " " + item;
+            }
         }
 	}
 
-	public Mission(bool isMain)
+	public void setupMission(bool isMain, bool isLocked)
 	{
         components = new List<Mission_Component>();
         isRequired = isMain;
+        isTaken = isMain;
+        lockPanel.enable = isLocked;
         HashSet<string> componentItems = new HashSet<string>();
-
-        for (int i = 0; i < randomNum(manager.maxComponents); i++) 
+        for (int i = 0; i < Helper.randomNum(Mission_Manager.Instance.maxComponents); i++) 
         {
-            components.Add(new Mission_Component(randomItem(componentItems), randomNum(manager.maxItems)));
+            components.Add(new Mission_Component(Mission_Manager.Instance.randomItem(componentItems), Helper.randomNum(Mission_Manager.Instance.maxItems)));
+        }
+
+        updateButton();
+    }
+
+    public void updateButton()
+	{
+        Button button = this.button.GetComponent<Button>();
+        TextMeshProUGUI tmpro = this.button.GetComponentInChildren<TextMeshProUGUI>();
+        if (isRequired)
+        {
+            tmpro.text = "Required";
+            button.interactable = false;
+        }
+        else if (!isTaken)
+        {
+            tmpro.text = "Accept";
+        }
+        else if (!isComplete)
+        {
+            tmpro.text = "In Progress";
+            button.interactable = false;
+        }
+        else
+        {
+            tmpro.text = "Turn In";
         }
     }
 
-    private string randomItem(HashSet<string> itemsToExclude)
-    {
-        string item;
-        do {
-            item = manager.items[Random.Range(1, manager.items.Count - 1)];
-        } while (!itemsToExclude.Contains(item));
-        itemsToExclude.Add(item);
-        return item;
-    }
-
-    private static int randomNum(int max)
+    public void onButtonClick()
 	{
-        return Random.Range(1, max);
-    }
+		if (!isTaken)
+		{
+            isTaken = true;
+            Mission_Manager.Instance.addMission(this);
+        }
+        else if (isComplete)
+		{
+            Mission_Manager.Instance.removeMission(this);
+        }
+        updateButton();
+	}
 }

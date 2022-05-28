@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Mission_Manager : MonoBehaviour
@@ -22,18 +23,59 @@ public class Mission_Manager : MonoBehaviour
     #endregion
 
     public List<string> items;
-    List<Mission> activeMissions;
+    List<Mission> activeMissions, availableMissions;
+    GameObject[] missionUI;
 
     public int maxComponents = 3, maxItems = 5;
-
-	private void Start()
+    int unlockedMissionSlots = 1;
+    public void addMission(Mission m)
 	{
-		if(maxComponents > items.Count)
+        activeMissions.Add(m);
+	}
+    public void removeMission(Mission m)
+    {
+        activeMissions.Remove(m);
+    }
+
+    private void Start()
+	{
+        activeMissions = new List<Mission>();
+        availableMissions = new List<Mission>();
+        missionUI = GameObject.FindGameObjectsWithTag("Mission");
+        
+        if (maxComponents > items.Count)
 		{
-            Debug.LogError("maxComponent will be set to items.Count, since the value entered will create an infinate loop");
+            Debug.LogWarning("maxComponent will be set to items.Count, since the value entered will create an infinate loop");
             maxComponents = items.Count;
 		}
 
-        activeMissions = new List<Mission>();
+        for (int i = 0; i < missionUI.Length; i++)
+		{
+            bool isFirst = false;
+            if(i == 0)
+			{
+                isFirst = true;
+			}
+
+            Mission temp = missionUI[i].GetComponent<Mission>();
+            temp.setupMission(isFirst, (i >= unlockedMissionSlots));
+            activeMissions.Add(temp);
+
+            TextMeshProUGUI tmpro = missionUI[i].GetComponentInChildren<TextMeshProUGUI>();
+
+            tmpro.text = temp.title;
+        }
 	}
+
+    public string randomItem(HashSet<string> itemsToExclude)
+    {
+        string item;
+        int i = 0;
+        do {
+            item = items[Random.Range(0, items.Count)];
+            i++;
+        } while (itemsToExclude.Contains(item) && i<10);
+        itemsToExclude.Add(item);
+        return item;
+    }
 }

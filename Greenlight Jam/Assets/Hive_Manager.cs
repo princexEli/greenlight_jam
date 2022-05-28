@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Hive_Manager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    Mission_Manager missionManager;
+    Upgrade_Manager upgradeManager;
+
+	private void Awake()
+	{
+        missionManager = GetComponent<Mission_Manager>();
+        upgradeManager = GetComponent<Upgrade_Manager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void onButtonClick()
+	{
+		SceneManager.LoadScene("Ground");
+	}
 }
