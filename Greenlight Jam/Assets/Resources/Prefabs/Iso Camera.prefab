@@ -304,7 +304,7 @@ ParentConstraint:
   - {x: 35.000084, y: 45, z: 0}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
-  m_AffectTranslationZ: 0
+  m_AffectTranslationZ: 1
   m_AffectRotationX: 0
   m_AffectRotationY: 0
   m_AffectRotationZ: 0
