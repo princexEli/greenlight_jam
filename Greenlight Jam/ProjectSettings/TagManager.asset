@@ -6,6 +6,14 @@ TagManager:
   tags:
   - Mission
   - Upgrade
+  - Lootable
+  - Key
+  - LockedDoor
+  - Breakable
+  - ImportantPickup
+  - Tentacle
+  - Poison
+  - EntranceExit
   layers:
   - Default
   - TransparentFX
