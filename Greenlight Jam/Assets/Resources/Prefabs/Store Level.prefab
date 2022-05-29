@@ -398,6 +398,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2009852989532393052}
     m_Modifications:
+    - target: {fileID: -9119389877009697656, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -9054479771566396343, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
         type: 3}
       propertyPath: m_RootOrder
@@ -453,10 +463,450 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8417677810886495365, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -8190643438395197974, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Key
+      objectReference: {fileID: 0}
+    - target: {fileID: -7802315990873629977, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -7709477502362704891, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -7572009264023301668, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -7442268766995389770, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -6947513669480249342, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tentacle
+      objectReference: {fileID: 0}
+    - target: {fileID: -6516665543676692379, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -6303403332576418000, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -6141522919066865029, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -5549645949000417240, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -5406905056876495818, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -5061685655095480245, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -4848955712407097509, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -4357288357265062357, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -4323558073613252324, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -4250737655584462697, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: EntranceExit
+      objectReference: {fileID: 0}
+    - target: {fileID: -3915279069449457464, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -3746354866753377355, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -3139288271917190253, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -2716494290706891700, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -2235362516410820732, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -2056714605458155533, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -1803183114065248352, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -1387403652979363850, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -1345444575619805711, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -1249525878894644982, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -1179655671313358723, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -705893762366506106, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -535786464019367295, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -447663903630908856, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -357116491582366012, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: -289303683363700045, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 882961520729749495, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
         type: 3}
       propertyPath: m_Name
       value: Store
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244892036315775606, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479330896887682563, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487393604810724729, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903773297359935942, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307471585708809356, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322999938372810211, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461721292857807983, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: ImportantPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 2535988729746501582, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832017008910821010, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.00000019861236
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832017008910821010, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832017008910821010, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000019861236
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832017008910821010, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832017008910821010, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2832017008910821010, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -179.99998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853284713793350085, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921461776046647685, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 3198529606311673662, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 3294343075728724207, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339764873982002274, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 3395617000815384298, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 3406945699526839282, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Poison
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518565803707052174, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564516707701317124, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847291986208287917, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238966094929465504, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788104066890180858, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055157631836816476, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071703291548067801, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5210518935355242848, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240410937496480912, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287825650128281774, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502936844431431175, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757002790271585736, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864042900647156696, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042509611733602265, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: EntranceExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047141749347772112, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6273426460348413507, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495613624978660054, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6615262919876324695, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6644376140147994691, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734755824284616028, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Poison
+      objectReference: {fileID: 0}
+    - target: {fileID: 6840692862361336740, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926050174487643709, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952488944920570041, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420951079076467007, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645565863002796319, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7810534404372637373, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130750598208347373, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8227753096739607590, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272748503066959615, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8279246795895797922, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8383696360738503411, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tentacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829530220981733649, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937920090323174624, guid: e4b6a96f93948ce4e8a9a2d88b2a6706,
+        type: 3}
+      propertyPath: m_TagString
+      value: Lootable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4b6a96f93948ce4e8a9a2d88b2a6706, type: 3}
