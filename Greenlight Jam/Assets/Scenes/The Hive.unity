@@ -128,36 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 56586295734840336, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: isLocked
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 168883935962517897, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: isLocked
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1314520630958984371, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1314520630958984371, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1314520630958984371, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1314520631496631662, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1314520631496631663, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
         type: 3}
       propertyPath: m_Pivot.x
@@ -268,86 +238,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1836932145158047614, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2008869220491377383, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2356309055611400356, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2366712117978621346, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2688356699945647533, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: isLocked
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3054139202118685228, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_text
-      value: The ship needs supplies.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3187246760228380523, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3674709640411741765, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4205626562927977194, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.00018310547
-      objectReference: {fileID: 0}
-    - target: {fileID: 4294936080835438163, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: isLocked
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4496581628901567322, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5197884531155695563, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 925c5e89ee5ef8a4abe55a20badd2efc, type: 3}
---- !u!1 &1727841393 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1314520631024590598, guid: 925c5e89ee5ef8a4abe55a20badd2efc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1302061483}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1727841400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1727841393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26694edbb7cab0244814e16f734f9e7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8745519031548478888
 PrefabInstance:
   m_ObjectHideFlags: 0
