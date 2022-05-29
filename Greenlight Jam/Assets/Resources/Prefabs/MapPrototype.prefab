@@ -381,14 +381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Store
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
     - target: {fileID: 996785416037619508, guid: fdb56e2f75f950b4f9ae28f4c7855a29,
         type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
->>>>>>> main
     - target: {fileID: 7399405979358629022, guid: fdb56e2f75f950b4f9ae28f4c7855a29,
         type: 3}
       propertyPath: m_SortingOrder
