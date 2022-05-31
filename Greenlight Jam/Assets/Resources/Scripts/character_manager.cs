@@ -18,7 +18,10 @@ public class Character_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		if (isIso) { Debug.Log("isIso"); }
+		if (isIso) 
+        { 
+            Debug.Log("isIso"); 
+        }
         else
 		{
             animator = GetComponent<Animator>();
