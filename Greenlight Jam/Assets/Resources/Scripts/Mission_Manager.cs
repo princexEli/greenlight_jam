@@ -37,10 +37,22 @@ public class Mission_Manager : MonoBehaviour
         activeMissions.Remove(m);
     }
 
-    private void Start()
+    public void LoadPause()
+	{
+        foreach(Mission m in activeMissions)
+		{
+            Debug.Log("ah");
+		}
+	}
+
+	private void Awake()
 	{
         activeMissions = new List<Mission>();
         availableMissions = new List<Mission>();
+    }
+
+	public void LoadHive()
+	{
         missionUI = GameObject.FindGameObjectsWithTag("Mission");
         
         if (maxComponents > items.Count)

@@ -26,7 +26,7 @@ public class Upgrade_Manager : MonoBehaviour
     List<Upgrade> availibleUpgrades, purchasedUpgrades;
     GameObject[] upgradeUI;
 
-    private void Start()
+    public void LoadHive()
     {
         availibleUpgrades = new List<Upgrade>();
         purchasedUpgrades = new List<Upgrade>();
@@ -39,4 +39,9 @@ public class Upgrade_Manager : MonoBehaviour
             availibleUpgrades.Add(temp);
         }
     }
+
+    public void LoadPause()
+	{
+
+	}
 }

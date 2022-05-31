@@ -46,8 +46,18 @@ public class Mission : MonoBehaviour
 
 	private void Awake()
 	{
-        button = gameObject.transform.Find("Button").gameObject;
-        lockPanel = gameObject.GetComponentInChildren<Locked_Panel>();
+        string scene = Helper.SceneName();
+
+        switch (scene)
+		{
+            case "The Hive":
+                button = gameObject.transform.Find("Button").gameObject;
+                lockPanel = gameObject.GetComponentInChildren<Locked_Panel>();
+                break;
+            default:
+                Debug.Log("Current Scene '" + scene + "' has no mission loadouts.");
+                break;
+        }
     }
 
 	private class Mission_Component
