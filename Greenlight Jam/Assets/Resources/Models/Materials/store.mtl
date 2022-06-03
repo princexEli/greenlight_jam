@@ -1,0 +1,47 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl custom3(Clone)(Clone)
+Kd 0 0 0
+
+newmtl _defaultMat(Clone)(Clone)
+Kd 0.359 0.359 0.359
+
+newmtl stone(Clone)(Clone)
+Kd 0.571 0.559 0.736
+
+newmtl wood(Clone)(Clone)
+Kd 0.2 0.195 0.189
+
+newmtl stoneDark(Clone)(Clone)
+Kd 0.403 0.39 0.594
+
+newmtl glass(Clone)(Clone)
+Kd 1 1 1
+
+newmtl stoneLight(Clone)(Clone)
+Kd 0.71 0.701 0.84
+
+newmtl wood(Clone)(Clone)(Clone)(Clone)(Clone)
+Kd 0.84 0.435 0.305
+
+newmtl wood(Clone)(Clone)(Clone)(Clone)
+Kd 0.84 0.435 0.305
+
+newmtl wood(Clone)(Clone)(Clone)
+Kd 0.84 0.435 0.305
+
+newmtl woodDark(Clone)(Clone)
+Kd 0.698 0.316 0.194
+
+newmtl woodLight(Clone)(Clone)
+Kd 0.816 0.58 0.42
+
+newmtl stoneLight(Clone)(Clone)(Clone)(Clone)
+Kd 0.71 0.701 0.84
+
+newmtl stoneDark(Clone)(Clone)(Clone)(Clone)
+Kd 0.403 0.39 0.594
+
+newmtl dark(Clone) (Instance)(Clone)
+Kd 0.2235294 0.2352941 0.2745098
+

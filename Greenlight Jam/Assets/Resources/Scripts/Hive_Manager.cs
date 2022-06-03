@@ -8,14 +8,21 @@ public class Hive_Manager : MonoBehaviour
     Mission_Manager missionManager;
     Upgrade_Manager upgradeManager;
 
-	private void Awake()
+	private void Start()
 	{
-        missionManager = GetComponent<Mission_Manager>();
-        upgradeManager = GetComponent<Upgrade_Manager>();
-    }
+		missionManager = Mission_Manager.Instance;
+		missionManager.LoadHive();
+		upgradeManager = Upgrade_Manager.Instance;
+		upgradeManager.LoadHive();
+	}
 
 	public void onButtonClick()
 	{
 		SceneManager.LoadScene("Ground");
+	}
+
+	private void Update()
+	{
+		Helper.ExitGame();
 	}
 }
