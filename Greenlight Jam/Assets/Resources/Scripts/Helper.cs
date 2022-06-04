@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public static class Helper
 {
+    public static string[] items = { "Scrap Metal", "Electronics", "Medication", "Trinkets"};
+
     public static int randomNum(int max)
     {
         return Random.Range(1, max);
@@ -19,5 +21,30 @@ public static class Helper
 	{
         Scene scene = SceneManager.GetActiveScene();
         return scene.name;
+    }
+
+    public static string SceneType()
+    {
+        if (SceneName() == "Main Menu" || SceneName() == "The Hive")
+		{
+            return SceneName();
+		}
+		else
+		{
+            return "Pause";
+		}
+	}
+
+    public static string randomItem(HashSet<string> itemsToExclude)
+    {
+        string item;
+        int i = 0;
+        do
+        {
+            item = items[Random.Range(0, items.Length)];
+            i++;
+        } while (itemsToExclude.Contains(item) && i < 10);
+        itemsToExclude.Add(item);
+        return item;
     }
 }

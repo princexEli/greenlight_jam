@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 699582129366554867}
   - component: {fileID: 699582129366554866}
   m_Layer: 5
-  m_Name: Title (1)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2579,7 +2579,7 @@ GameObject:
   - component: {fileID: 1290699524636098934}
   - component: {fileID: 1904884652130394359}
   m_Layer: 5
-  m_Name: Info Panel
+  m_Name: Inventory Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3033,21 +3033,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3109,7 +3094,7 @@ PrefabInstance:
     - target: {fileID: 8088787231115650060, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
         type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (1)
+      value: Electronics
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9cc6b9f53e69fd499b5fe83e519eac1, type: 3}
@@ -3170,21 +3155,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: -53.885498
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
         type: 3}
@@ -3249,7 +3219,7 @@ PrefabInstance:
     - target: {fileID: 8088787231115650060, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
         type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (3)
+      value: Trinkets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9cc6b9f53e69fd499b5fe83e519eac1, type: 3}
@@ -3310,21 +3280,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: -53.885498
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
         type: 3}
@@ -3389,7 +3344,7 @@ PrefabInstance:
     - target: {fileID: 8088787231115650060, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
         type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (2)
+      value: Medication
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9cc6b9f53e69fd499b5fe83e519eac1, type: 3}
@@ -3578,21 +3533,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2646493153655022250, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -3654,7 +3594,7 @@ PrefabInstance:
     - target: {fileID: 8088787231115650060, guid: a9cc6b9f53e69fd499b5fe83e519eac1,
         type: 3}
       propertyPath: m_Name
-      value: Inventory Slot
+      value: Scrap Metal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9cc6b9f53e69fd499b5fe83e519eac1, type: 3}

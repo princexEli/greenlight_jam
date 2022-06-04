@@ -5,7 +5,6 @@ using UnityEngine;
 public class Upgrade : MonoBehaviour
 {
     [SerializeField]
-    bool isLocked = true;
 	Locked_Panel lockPanel;
 	private void Awake()
 	{

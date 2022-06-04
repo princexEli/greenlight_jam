@@ -16,6 +16,9 @@ TagManager:
   - EntranceExit
   - Music
   - Inventory
+  - Empty
+  - Awarness
+  - Level
   layers:
   - Default
   - TransparentFX
@@ -25,7 +28,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Lootable
   - 
   - 
   - 

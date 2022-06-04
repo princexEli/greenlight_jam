@@ -78,16 +78,4 @@ public class Mission_Manager : MonoBehaviour
             tmpro.text = temp.title;
         }
 	}
-
-    public string randomItem(HashSet<string> itemsToExclude)
-    {
-        string item;
-        int i = 0;
-        do {
-            item = items[Random.Range(0, items.Count)];
-            i++;
-        } while (itemsToExclude.Contains(item) && i<10);
-        itemsToExclude.Add(item);
-        return item;
-    }
 }

@@ -55,7 +55,6 @@ public class Mission : MonoBehaviour
                 lockPanel = gameObject.GetComponentInChildren<Locked_Panel>();
                 break;
             default:
-                Debug.Log("Current Scene '" + scene + "' has no mission loadouts.");
                 break;
         }
     }
@@ -100,7 +99,7 @@ public class Mission : MonoBehaviour
         HashSet<string> componentItems = new HashSet<string>();
         for (int i = 0; i < Helper.randomNum(Mission_Manager.Instance.maxComponents); i++) 
         {
-            components.Add(new Mission_Component(Mission_Manager.Instance.randomItem(componentItems), Helper.randomNum(Mission_Manager.Instance.maxItems)));
+            components.Add(new Mission_Component(Helper.randomItem(componentItems), Helper.randomNum(Mission_Manager.Instance.maxItems)));
         }
 
         updateButton();
