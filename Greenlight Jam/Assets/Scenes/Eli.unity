@@ -202,11 +202,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2098018870452572935, guid: 4367e7d0145038144aad61eda497afe1,
         type: 3}
-      propertyPath: slots.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2098018870452572935, guid: 4367e7d0145038144aad61eda497afe1,
-        type: 3}
       propertyPath: slots.Array.data[0]
       value: 
       objectReference: {fileID: 1418129435}
@@ -323,6 +318,11 @@ PrefabInstance:
     - target: {fileID: 2009852989532393052, guid: 3600aa38c40bc914eb9e1f3bc016658a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758644399960868270, guid: 3600aa38c40bc914eb9e1f3bc016658a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6924521906845122090, guid: 3600aa38c40bc914eb9e1f3bc016658a,

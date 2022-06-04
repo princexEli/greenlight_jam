@@ -7,39 +7,78 @@ using System;
 public class Loot : MonoBehaviour
 {
 	[Header("Is Special")]
+	[Tooltip("Is true, there will be no random loot.")]
 	public bool isUnique = false;
 	
 	[Header("Possible Loot")]
 	public int minItems = 0, maxItems = 5;
-	public bool metal, electronics, meds, trinkets;
 	Outline highlight;
 
-	List<string> loot;
 	bool isLooted = false;
+	Dictionary<string, int> loot;
 
-    private void Awake()
+	private void Awake()
 	{
 		highlight = gameObject.AddComponent<Outline>();
 		highlight.color = 1;
+		loot = new Dictionary<string, int>();
 	}
 
 	private void Start()
 	{
-		randomizeLoot();
 		highlight.enabled = false;
+	}
+
+	public void obtainLoot()
+	{
+		randomizeLoot();
+		List<string> temp = new List<string>();
+
+		if (isUnique)
+		{
+			Inventory_Manager.Instance.gainUnique();
+		}
+		else
+		{
+			foreach (string s in loot.Keys)
+			{
+				temp.AddRange(Inventory_Manager.Instance.gainLoot(s, loot[s]));
+			}
+		}
+
+		Update_Panel.Instance.addLines(temp);
 	}
 
 	private void randomizeLoot()
 	{
+		if (isUnique) return;
 
+		for (int i = 0; i < Helper.randomNum(minItems, maxItems); i++)
+		{
+			string temp = Helper.randomItem();
+			if (loot.ContainsKey(temp))
+			{
+				loot[temp]++;
+			}
+			else
+			{
+				loot.Add(temp, 1);
+			}
+		}
+
+		if (loot.Count == 0)
+		{
+			Update_Panel.Instance.addLine("Container empty");
+		}
 	}
 
 	public void interact()
 	{
 		if (isLooted) return;
-
+		obtainLoot();
 		isLooted = true;
 		tag = "Empty";
+		Character_Manager.Instance.cancelHighlight();
 	}
 
 	internal void Highlight(bool isActive)

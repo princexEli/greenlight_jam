@@ -122,7 +122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3810564897912039393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.99, y: -2.162, z: -6.1654243}
+  m_LocalPosition: {x: -4.99, y: -2.224, z: -6.1654243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3810564897473246978}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isIso: 1
-  moveSpeed: 5
+  moveSpeed: 3
   rotationSpeed: 500
 --- !u!54 &1095407336
 Rigidbody:
@@ -159,8 +159,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 3
 --- !u!136 &1095407337
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -172,9 +172,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.15096188
-  m_Height: 0.8150532
+  m_Height: 0.7599938
   m_Direction: 1
-  m_Center: {x: 0, y: 0.004567027, z: 0}
+  m_Center: {x: 0, y: 0.032096744, z: 0}
 --- !u!1 &5049990624129137968
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,13 +327,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8332372473943004977}
-  m_LocalRotation: {x: 0.35355482, y: 0.3535532, z: -0.14644723, w: 0.85355276}
-  m_LocalPosition: {x: -4.99, y: -2.162, z: -6.1654243}
+  m_LocalRotation: {x: 0.27781588, y: 0.36497167, z: -0.1150751, w: 0.8811196}
+  m_LocalPosition: {x: -4.99, y: -2.224, z: -6.1654253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2211825782693982296}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45.0002, y: 45.000015, z: 0}
+  m_LocalEulerAnglesHint: {x: 35, y: 45, z: 0}
 --- !u!20 &2564988815993215803
 Camera:
   m_ObjectHideFlags: 0
@@ -395,11 +395,11 @@ ParentConstraint:
   m_Enabled: 1
   m_Weight: 1
   m_TranslationAtRest: {x: -4.99, y: -2.162, z: -6.1654253}
-  m_RotationAtRest: {x: 45.000202, y: 44.999996, z: 0}
+  m_RotationAtRest: {x: 35.000015, y: 44.99999, z: 0}
   m_TranslationOffsets:
   - {x: 0, y: 0, z: 0}
   m_RotationOffsets:
-  - {x: 45.00022, y: 45, z: 0}
+  - {x: 35.00002, y: 45, z: 0}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1

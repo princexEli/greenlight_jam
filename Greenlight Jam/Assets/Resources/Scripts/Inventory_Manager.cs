@@ -22,6 +22,7 @@ public class Inventory_Manager : MonoBehaviour
     #endregion
 
     public List<Inventory_Slot> slots;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,9 +39,14 @@ public class Inventory_Manager : MonoBehaviour
 		}
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public List<string> gainLoot(string name, int value)
+	{
+        List<string> temp = slots[System.Array.IndexOf(Helper.items, name)].addtoCurrent(value);
+        return temp;
+	}
+
+    public void gainUnique()
+	{
+        //hasUnique = true;
+	}
 }

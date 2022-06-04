@@ -9,7 +9,12 @@ public static class Helper
 
     public static int randomNum(int max)
     {
-        return Random.Range(1, max);
+        return randomNum(1, max);
+    }
+
+    public static int randomNum(int min, int max)
+    {
+        return Random.Range(min, max);
     }
 
     public static void ExitGame()
@@ -34,6 +39,11 @@ public static class Helper
             return "Pause";
 		}
 	}
+
+    public static string randomItem()
+    {
+        return randomItem(new HashSet<string>());
+    }
 
     public static string randomItem(HashSet<string> itemsToExclude)
     {

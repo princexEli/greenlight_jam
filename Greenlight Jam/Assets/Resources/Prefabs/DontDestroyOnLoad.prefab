@@ -239,6 +239,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 1590275247918796935, guid: fcb4584cbea20204f81d9e53a4b9a5b6,
+        type: 3}
+      propertyPath: slots.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 140147294666597135, guid: fcb4584cbea20204f81d9e53a4b9a5b6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fcb4584cbea20204f81d9e53a4b9a5b6, type: 3}

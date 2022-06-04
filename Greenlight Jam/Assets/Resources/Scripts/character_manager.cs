@@ -5,6 +5,23 @@ using UnityEngine;
 
 public class Character_Manager : MonoBehaviour
 {
+    #region instance
+    private static Character_Manager instance;
+    public static Character_Manager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<Character_Manager>();
+            }
+
+            return instance;
+        }
+        set { instance = value; }
+    }
+    #endregion
+
     public bool isIso;
     public float moveSpeed = 5,rotationSpeed = 5;
 
@@ -16,6 +33,10 @@ public class Character_Manager : MonoBehaviour
     private Collider awareness;
     private Rigidbody rb;
     private GameObject capsule;
+    
+    bool canLoot = false;
+    Loot lootObj;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -35,7 +56,14 @@ public class Character_Manager : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    void Update()
+	{
+        if (canLoot && lootObj != null && Input.GetButtonDown("Interact"))
+		{
+            lootObj.interact();
+		}
+	}
+
     void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -76,11 +104,16 @@ public class Character_Manager : MonoBehaviour
         }
     }
 
+   
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Lootable")
         {
-            other.gameObject.GetComponent<Loot>().Highlight(true);
+            canLoot = true;
+            lootObj = other.gameObject.GetComponent<Loot>();
+            lootObj.Highlight(true);
         }else if (other.tag == "Level")
 		{
             rb.velocity = Vector3.zero;
@@ -90,7 +123,14 @@ public class Character_Manager : MonoBehaviour
     {
         if(other.tag == "Lootable")
 		{
-            other.gameObject.GetComponent<Loot>().Highlight(false);
+            cancelHighlight();
+            canLoot = false;
 		}
+    }
+
+    public void cancelHighlight()
+	{
+        lootObj.Highlight(false);
+        lootObj = null;
     }
 }

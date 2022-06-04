@@ -6,11 +6,13 @@ public class Pause_Manager : MonoBehaviour
 {
 	Mission_Manager missionManager;
 	Upgrade_Manager upgradeManager;
-	GameObject pauseMenu;
+	GameObject pauseMenu, isoMenu;
 	bool isPaused = false;
 
 	private void Start()
 	{
+		isoMenu = GameObject.Find("Iso UI");
+
 		pauseMenu = GameObject.Find("Pause UI");
 		pauseMenu.SetActive(isPaused);
 		missionManager = Mission_Manager.Instance;
@@ -33,6 +35,7 @@ public class Pause_Manager : MonoBehaviour
 				Time.timeScale = 0;
 			}
 			pauseMenu.SetActive(isPaused);
+			isoMenu.SetActive(!isPaused);
 		}
 	}
 

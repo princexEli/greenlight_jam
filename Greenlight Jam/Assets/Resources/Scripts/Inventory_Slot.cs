@@ -6,39 +6,40 @@ using TMPro;
 public class Inventory_Slot : MonoBehaviour
 {
     string type;
-    int Current = 0, max=5;
+    public bool isFull
+	{
+		get
+		{
+            return current == max;
+		}
+	}
+    int current = 0, max=5;
     TextMeshProUGUI display;
-    public int current
-    {
-        get
-        {
-            return Current;
-        }
-        set
-        {
-            int added = 0;
-            for (int i = 0; i < value; i++)
-            {
-                if (Current + 1 <= max)
-                {
-                    Current++;
-                    added++;
-                }
-                else
-                {
-                    Debug.Log("Inventory full.");
-                    break;
-                }
-            }
+    public List<string> addtoCurrent(int value)
+	{
+        List<string> temp = new List<string>();
+        if (current == max) return temp;
 
-            if (added != 0)
-            {
-                Debug.Log("+ " + added + " " + type);
-            }
+        int added = value;
+        int result = current + value;
+        if (result > max) 
+        { 
+            int remainder = result - max;
+            added = value - remainder;
+            result = max;
+		}
+        temp.Add("+ " + added + " " + type);
 
-            updateDisplay();
+        if (result == max)
+        {
+            temp.Add(type + " inventory now full");
         }
-    }
+
+        current = result;
+        updateDisplay();
+
+        return temp;
+	}
 
     public void setupPause(string type)
 	{
