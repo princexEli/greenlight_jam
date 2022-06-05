@@ -26,17 +26,20 @@ public class Inventory_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(slots.Count != Helper.items.Length)
+        if (Helper.SceneType() == "Ground")
 		{
-            Debug.LogError("Number of inventory slots ("+ slots.Count + ") does not equal number of inventory types(" + Helper.items.Length + ").");
-		}
+            if (slots.Count != Helper.items.Length)
+            {
+                Debug.LogError("Number of inventory slots (" + slots.Count + ") does not equal number of inventory types(" + Helper.items.Length + ").");
+            }
 
-        int i = 0;
-        foreach(Inventory_Slot slot in slots)
-		{
-            slot.setupPause(Helper.items[i]);
-            i++;
-		}
+            int i = 0;
+            foreach (Inventory_Slot slot in slots)
+            {
+                slot.setupPause(Helper.items[i]);
+                i++;
+            }
+        }   
     }
 
     public List<string> gainLoot(string name, int value)
