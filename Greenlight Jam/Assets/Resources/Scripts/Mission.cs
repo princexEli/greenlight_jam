@@ -41,12 +41,13 @@ public class Mission : MonoBehaviour
             return true;
 		}
 	}
+    TextMeshProUGUI info;
 
     List<Mission_Component> components;
 
 	private void Awake()
 	{
-        string scene = Helper.SceneName();
+        string scene = Helper.SceneType();
 
         switch (scene)
 		{
@@ -54,10 +55,30 @@ public class Mission : MonoBehaviour
                 button = gameObject.transform.Find("Button").gameObject;
                 lockPanel = gameObject.GetComponentInChildren<Locked_Panel>();
                 break;
+            case "Ground":
+                Debug.Log("ee");
+                info = gameObject.GetComponentInChildren<TextMeshProUGUI>();
+                loadMission();
+                info.text = title;
+                break;
             default:
                 break;
         }
     }
+
+    private void loadMission()
+	{
+        Mission m = Mission_Manager.Instance.getNextMission();
+        if(m == null)
+		{
+            gameObject.SetActive(false);
+		}
+		else
+		{
+            components = m.components;
+
+		}
+	}
 
 	private class Mission_Component
 	{

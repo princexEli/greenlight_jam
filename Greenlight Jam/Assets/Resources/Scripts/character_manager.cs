@@ -22,14 +22,14 @@ public class Character_Manager : MonoBehaviour
     }
     #endregion
 
-    public bool isIso;
-    public float moveSpeed = 5,rotationSpeed = 5;
+    public float moveSpeed, rotationSpeed;
 
     //2d only
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
     //iso only
+    bool isIso;
     private Collider awareness;
     private Rigidbody rb;
     private GameObject capsule;
@@ -41,6 +41,8 @@ public class Character_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        if (Helper.SceneName() != "Ground")
+            isIso = true;
 		if (isIso) 
         {
             rb = gameObject.GetComponent<Rigidbody>();
@@ -103,9 +105,6 @@ public class Character_Manager : MonoBehaviour
             spriteRenderer.flipX = true;
         }
     }
-
-   
-
 
     private void OnTriggerEnter(Collider other)
     {

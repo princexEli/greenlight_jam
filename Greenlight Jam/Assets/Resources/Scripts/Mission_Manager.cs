@@ -28,28 +28,26 @@ public class Mission_Manager : MonoBehaviour
 
     public int maxComponents = 3, maxItems = 5;
     int unlockedMissionSlots = 1;
-    public void addMission(Mission m)
-	{
-        activeMissions.Add(m);
-	}
-    public void removeMission(Mission m)
+
+    private void Awake()
     {
-        activeMissions.Remove(m);
+        activeMissions = new List<Mission>();
+        availableMissions = new List<Mission>();
     }
 
     public void LoadPause()
 	{
-        foreach(Mission m in activeMissions)
-		{
-            Debug.Log("ah");
-		}
+        
 	}
 
-	private void Awake()
+    int currMission = 0;
+    public Mission getNextMission()
 	{
-        activeMissions = new List<Mission>();
-        availableMissions = new List<Mission>();
-    }
+        if (currMission == activeMissions.Count) return null;
+        Mission m = activeMissions[0];
+        currMission++;
+        return m;
+	}
 
 	public void LoadHive()
 	{
@@ -71,11 +69,22 @@ public class Mission_Manager : MonoBehaviour
 
             Mission temp = missionUI[i].GetComponent<Mission>();
             temp.setupMission(isFirst, (i >= unlockedMissionSlots));
-            activeMissions.Add(temp);
-
+            availableMissions.Add(temp);
+            if (isFirst)
+                activeMissions.Add(temp);
             TextMeshProUGUI tmpro = missionUI[i].GetComponentInChildren<TextMeshProUGUI>();
 
             tmpro.text = temp.title;
         }
 	}
+    public void addMission(Mission m)
+    {
+        activeMissions.Add(m);
+    }
+    public void removeMission(Mission m)
+    {
+        activeMissions.Remove(m);
+    }
+
+
 }

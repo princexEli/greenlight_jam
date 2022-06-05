@@ -8,15 +8,12 @@ public class Upgrade : MonoBehaviour
 	Locked_Panel lockPanel;
 	private void Awake()
 	{
-		string scene = Helper.SceneName();
-
-		switch (scene)
+		switch (Helper.SceneName())
 		{
 			case "The Hive":
 				lockPanel = gameObject.GetComponentInChildren<Locked_Panel>();
 				break;
 			default:
-				Debug.Log("Current Scene '" + scene + "' has no upgrade loadouts.");
 				break;
 		}
 	}

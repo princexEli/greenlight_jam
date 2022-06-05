@@ -11,9 +11,18 @@ public class Hive_Manager : MonoBehaviour
 	private void Start()
 	{
 		missionManager = Mission_Manager.Instance;
-		missionManager.LoadHive();
 		upgradeManager = Upgrade_Manager.Instance;
-		upgradeManager.LoadHive();
+		if (Helper.SceneType() == "The Hive")
+		{
+			missionManager.LoadHive();
+			upgradeManager.LoadHive();
+		}
+		else if(Helper.SceneType() != "Main Menu") 
+		{
+			missionManager.LoadPause();
+			upgradeManager.LoadPause();
+		}
+		
 	}
 
 	public void onButtonClick()
