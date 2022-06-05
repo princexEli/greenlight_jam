@@ -20,7 +20,16 @@ public class Loot : MonoBehaviour
 	private void Awake()
 	{
 		highlight = gameObject.AddComponent<Outline>();
-		highlight.color = 1;
+		try
+		{
+			highlight.color = 1;
+		}
+		catch(Exception ex)
+		{
+			Debug.LogError(gameObject.name + " failed to add highlight");
+		}
+		tag = "Lootable";
+		gameObject.layer = LayerMask.NameToLayer("Lootable");
 		loot = new Dictionary<string, int>();
 	}
 
