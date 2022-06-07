@@ -26,7 +26,7 @@ public class Inventory_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Helper.SceneType() == "Ground")
+        if (Helper.SceneType() == "Pause")
 		{
             if (slots.Count != Helper.items.Length)
             {
