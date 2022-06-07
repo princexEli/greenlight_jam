@@ -21,22 +21,25 @@ public class Inventory_Manager : MonoBehaviour
     }
     #endregion
 
-    public List<Inventory_Slot> slots;
+    List<Inventory_Slot> slots;
 
     // Start is called before the first frame update
     void Start()
     {
         if (Helper.SceneType() == "Pause")
 		{
-            if (slots.Count != Helper.items.Length)
+            slots = new List<Inventory_Slot>();
+            int i = 0;
+            GameObject[] slotObj = GameObject.FindGameObjectsWithTag("Inventory");
+            if (slotObj.Length != Helper.items.Length)
             {
                 Debug.LogError("Number of inventory slots (" + slots.Count + ") does not equal number of inventory types(" + Helper.items.Length + ").");
             }
-
-            int i = 0;
-            foreach (Inventory_Slot slot in slots)
+            foreach (GameObject slot in slotObj)
             {
-                slot.setupPause(Helper.items[i]);
+                Inventory_Slot temp = slot.GetComponent<Inventory_Slot>();
+                temp.setupPause(Helper.items[i]);
+                slots.Add(temp);
                 i++;
             }
         }   
