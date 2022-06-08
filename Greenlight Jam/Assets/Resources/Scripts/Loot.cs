@@ -92,6 +92,13 @@ public class Loot : MonoBehaviour
 
 	internal void Highlight(bool isActive)
 	{
-		highlight.enabled = isActive;
+		try
+		{
+			highlight.enabled = isActive;
+		}
+		catch (Exception ex)
+		{
+			Debug.LogError("Failure to set highlight to "+isActive +". "  + ex);
+		}
 	}
 }
