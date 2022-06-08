@@ -129,6 +129,7 @@ public class Character_Manager : MonoBehaviour
 
     public void cancelHighlight()
 	{
+        if (lootObj == null) return;
         lootObj.Highlight(false);
         lootObj = null;
     }
