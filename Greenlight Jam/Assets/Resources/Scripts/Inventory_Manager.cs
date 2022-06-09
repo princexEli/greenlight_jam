@@ -22,32 +22,35 @@ public class Inventory_Manager : MonoBehaviour
     #endregion
 
     List<Inventory_Slot> slots;
+    bool iaLoaded = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        if (Helper.SceneType() == "Pause")
-		{
-            slots = new List<Inventory_Slot>();
-            int i = 0;
-            GameObject[] slotObj = GameObject.FindGameObjectsWithTag("Inventory");
-            if (slotObj.Length != Helper.items.Length)
-            {
-                Debug.LogError("Number of inventory slots (" + slots.Count + ") does not equal number of inventory types(" + Helper.items.Length + ").");
-            }
-            foreach (GameObject slot in slotObj)
-            {
-                Inventory_Slot temp = slot.GetComponent<Inventory_Slot>();
-                temp.setupPause(Helper.items[i]);
-                slots.Add(temp);
-                i++;
-            }
-        }   
+        slots = new List<Inventory_Slot>();
+    }
+
+    public void LoadPause()
+	{
+        int i = 0;
+        GameObject[] slotObj = GameObject.FindGameObjectsWithTag("Inventory");
+        if (slotObj.Length != Helper.items.Length)
+        {
+            Debug.LogError("Number of inventory slots (" + slotObj.Length + ") does not equal number of inventory types(" + Helper.items.Length + ").");
+        }
+        foreach (GameObject slot in slotObj)
+        {
+            Inventory_Slot temp = slot.GetComponent<Inventory_Slot>();
+            temp.setupPause(Helper.items[i]);
+            slots.Add(temp);
+            i++;
+        }
     }
 
     public List<string> gainLoot(string name, int value)
 	{
-        List<string> temp = slots[System.Array.IndexOf(Helper.items, name)].addtoCurrent(value);
+        int pos = System.Array.IndexOf(Helper.items, name);
+        List<string> temp = slots[pos].addtoCurrent(value);
         return temp;
 	}
 

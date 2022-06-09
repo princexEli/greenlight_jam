@@ -132,4 +132,9 @@ public class Character_Manager : MonoBehaviour
         lootObj.Highlight(false);
         lootObj = null;
     }
+
+    public void teleport(Transform newPos)
+	{
+        gameObject.transform.position = newPos.position;
+	}
 }
