@@ -5027,6 +5027,7 @@ GameObject:
   - component: {fileID: 1433950401852151271}
   - component: {fileID: 60313694067772699}
   - component: {fileID: 1591122668218331306}
+  - component: {fileID: 6931870730728493046}
   m_Layer: 0
   m_Name: Stairs1
   m_TagString: Untagged
@@ -5108,6 +5109,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6931870730728493046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3580034585688203810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123260af258ce2e4abb552ebfdb2c212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLevelExit: 0
+  newLocation: {fileID: 0}
 --- !u!1 &3640943498989868822
 GameObject:
   m_ObjectHideFlags: 0
@@ -9104,6 +9119,7 @@ GameObject:
   - component: {fileID: 37302808267505854}
   - component: {fileID: 8681747015023807585}
   - component: {fileID: 2943324982721643247}
+  - component: {fileID: 7823407027721896126}
   m_Layer: 0
   m_Name: EntranceExit2
   m_TagString: Untagged
@@ -9185,6 +9201,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7823407027721896126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7119821725809289707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123260af258ce2e4abb552ebfdb2c212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLevelExit: 1
+  newLocation: {fileID: 0}
 --- !u!1 &7184395931623220600
 GameObject:
   m_ObjectHideFlags: 0
@@ -9918,6 +9948,7 @@ GameObject:
   - component: {fileID: 6588624966751032746}
   - component: {fileID: 5432517511502639054}
   - component: {fileID: 9007242754315499487}
+  - component: {fileID: 1835413437894994892}
   m_Layer: 0
   m_Name: EntranceExit1
   m_TagString: Untagged
@@ -9999,6 +10030,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1835413437894994892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7759234142154278855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123260af258ce2e4abb552ebfdb2c212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLevelExit: 1
+  newLocation: {fileID: 0}
 --- !u!1 &7813955562372272642
 GameObject:
   m_ObjectHideFlags: 0
