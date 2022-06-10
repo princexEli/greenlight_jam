@@ -116,6 +116,9 @@ public class Character_Manager : MonoBehaviour
         }else if (other.tag == "Level")
 		{
             rb.velocity = Vector3.zero;
+		}else if(other.tag == "EntranceExit")
+		{
+
 		}
     }
     private void OnTriggerExit(Collider other)
@@ -125,6 +128,10 @@ public class Character_Manager : MonoBehaviour
             cancelHighlight();
             canLoot = false;
 		}
+        else if (other.tag == "EntranceExit")
+        {
+
+        }
     }
 
     public void cancelHighlight()
