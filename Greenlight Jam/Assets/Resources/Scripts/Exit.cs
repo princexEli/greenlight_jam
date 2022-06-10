@@ -9,6 +9,7 @@ public class Exit : MonoBehaviour
 
 	private void Awake()
 	{
+		gameObject.tag = "EntranceExit";
 		if(!isLevelExit && newLocation == null)
 		{
 			Debug.LogError("New location not set.");
