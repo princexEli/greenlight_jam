@@ -35,6 +35,8 @@ public class Character_Manager : MonoBehaviour
     private GameObject capsule;
     
     bool canLoot = false;
+    bool canExit = false;
+    Exit exit;
     Loot lootObj;
 
 
@@ -63,6 +65,10 @@ public class Character_Manager : MonoBehaviour
         if (canLoot && lootObj != null && Input.GetButtonDown("Interact"))
 		{
             lootObj.interact();
+		}
+        else if(canExit && Input.GetButtonDown("Interact"))
+		{
+            exit.teleport();
 		}
 	}
 
@@ -118,8 +124,10 @@ public class Character_Manager : MonoBehaviour
             rb.velocity = Vector3.zero;
 		}else if(other.tag == "EntranceExit")
 		{
-
-		}
+            canExit = true;
+            exit = other.gameObject.GetComponent<Exit>();
+            exit.Highlight(true);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -130,7 +138,8 @@ public class Character_Manager : MonoBehaviour
 		}
         else if (other.tag == "EntranceExit")
         {
-
+            cancelExit();
+            canExit = false;
         }
     }
 
@@ -139,6 +148,13 @@ public class Character_Manager : MonoBehaviour
         if (lootObj == null) return;
         lootObj.Highlight(false);
         lootObj = null;
+    }
+
+    public void cancelExit()
+    {
+        if (exit == null) return;
+        exit.Highlight(false);
+        exit = null;
     }
 
     public void teleport(Transform newPos)
