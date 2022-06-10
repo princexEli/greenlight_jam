@@ -14,6 +14,7 @@ public class Hive_Manager : MonoBehaviour
 		upgradeManager = Upgrade_Manager.Instance;
 		if (Helper.SceneType() == "The Hive")
 		{
+			Audio_Manager.Instance.swapTheme();
 			missionManager.LoadHive();
 			upgradeManager.LoadHive();
 		}
