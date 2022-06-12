@@ -13,17 +13,21 @@ public class Pause_Manager : MonoBehaviour
 
 	private void Start()
 	{
+		if (Mission_Manager.Instance == null)
+		{
+			Helper.setupTest();
+		}
 		Audio_Manager.Instance.swapTheme();
 		isoMenu = GameObject.Find("Iso UI");
 		inventoryManager = Inventory_Manager.Instance;
-		inventoryManager.LoadPause();
-		pauseMenu = GameObject.Find("Pause UI");
-		pauseMenu.SetActive(isPaused);
+		inventoryManager.Load();
 		missionManager = Mission_Manager.Instance;
 		missionManager.LoadPause();
 		upgradeManager = Upgrade_Manager.Instance;
 		upgradeManager.LoadPause();
-		
+		pauseMenu = GameObject.Find("Pause UI");
+		pauseMenu.SetActive(isPaused);
+
 	}
 
 	private void Update()

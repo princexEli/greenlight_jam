@@ -43,7 +43,7 @@ public class Character_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (Helper.SceneName() != "Ground")
+        if (Helper.SceneType() == "Pause")
             isIso = true;
 		if (isIso) 
         {

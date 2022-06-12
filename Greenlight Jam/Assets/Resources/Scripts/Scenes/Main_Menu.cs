@@ -7,10 +7,15 @@ public class Main_Menu : MonoBehaviour
 {
     Slider volumeSlider;
 
-    public void onPlayClicked()
+	private void Awake()
 	{
-		SceneManager.LoadScene("The Hive");
+		volumeSlider = gameObject.transform.GetComponentInChildren<Slider>();
 	}
+	public void onPlayClicked()
+	{
+		Helper.changeScene("Hive");
+	}
+
 	private void Update()
 	{
 		Helper.ExitGame();

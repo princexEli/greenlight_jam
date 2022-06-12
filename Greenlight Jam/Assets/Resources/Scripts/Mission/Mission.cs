@@ -10,6 +10,7 @@ public class Mission : MonoBehaviour
 		get
 		{
             string Title = "";
+            if (components.Count == 0) return "";
             foreach(Mission_Component comp in components)
 			{
                 string part = comp.title;
@@ -23,9 +24,7 @@ public class Mission : MonoBehaviour
             return Title;
 		}
 	}
-    [SerializeField]
     bool isRequired;
-    [SerializeField]
     bool isTaken;
     GameObject button;
     Locked_Panel lockPanel;
@@ -47,19 +46,15 @@ public class Mission : MonoBehaviour
 
 	private void Awake()
 	{
-        string scene = Helper.SceneType();
-
-        switch (scene)
+        components = new List<Mission_Component>();
+        switch (Helper.SceneType())
 		{
-            case "The Hive":
+            case "Hive":
                 button = gameObject.transform.Find("Button").gameObject;
                 lockPanel = gameObject.GetComponentInChildren<Locked_Panel>();
                 break;
-            case "Ground":
-                Debug.Log("ee");
+            case "Pause":
                 info = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-                loadMission();
-                info.text = title;
                 break;
             default:
                 break;
@@ -68,6 +63,18 @@ public class Mission : MonoBehaviour
 
     private void loadMission()
 	{
+        components = new List<Mission_Component>();
+        switch (Helper.SceneType())
+        {
+            case "Hive":
+                break;
+            case "Pause":
+                loadMission();
+                info.text = title;
+                break;
+            default:
+                break;
+        }
         Mission m = Mission_Manager.Instance.getNextMission();
         if(m == null)
 		{
@@ -96,10 +103,6 @@ public class Mission : MonoBehaviour
 		{
             required = requiredAmount;
             item = itemName;
-            if (required > 1)
-            { 
-                item = item + "s";
-            }
         }
 
         public string title 

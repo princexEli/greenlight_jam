@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public static class Helper
 {
-    public static string[] items = { "Scrap Metal", "Electronics", "Medication", "Trinkets"};
+    public static string[] items = { "Scrap Metal", "Electronic(s)", "Medication(s)", "Trinket(s)"};
 
     public static int randomNum(int max)
     {
@@ -22,23 +22,45 @@ public static class Helper
         Application.Quit();
     }
 
-    public static string SceneName()
-	{
-        Scene scene = SceneManager.GetActiveScene();
-        return scene.name;
-    }
-
+    public const string MENU = "Menu", HIVE = "Hive", SUMMARY = "Summary", MAP = "Map", PAUSE="Pause";
     public static string SceneType()
     {
-        if (SceneName() == "Main Menu" || SceneName() == "The Hive")
-		{
-            return SceneName();
-		}
-		else
-		{
-            return "Pause";
+        switch(SceneManager.GetActiveScene().name)
+        {
+            case "Main Menu":
+                return MENU;
+            case "The Hive":
+                return HIVE;
+            case "Mission End":
+                return SUMMARY;
+            case "Ground":
+                return MAP;
+            default: 
+                return PAUSE;
 		}
 	}
+
+    public static void changeScene(string name)
+	{
+        switch (name)
+        {
+            case MENU:
+                SceneManager.LoadScene("Main Menu");
+                break;
+            case HIVE:
+                SceneManager.LoadScene("The Hive");
+                break;
+            case SUMMARY:
+                SceneManager.LoadScene("Mission End");
+                break;
+            case MAP:
+                SceneManager.LoadScene("Ground");
+                break;
+            default:
+                SceneManager.LoadScene(name);
+                break;
+        }
+    }
 
     public static string randomItem()
     {

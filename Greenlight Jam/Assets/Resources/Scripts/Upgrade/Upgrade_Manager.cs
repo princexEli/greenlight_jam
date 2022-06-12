@@ -22,7 +22,7 @@ public class Upgrade_Manager : MonoBehaviour
     #endregion
 
     public List<string> items;
-    int unlockedUpgradeSlots = 0;
+    int unlockedUpgradeSlots = 1;
     List<Upgrade> availibleUpgrades, purchasedUpgrades;
     GameObject[] upgradeUI;
 

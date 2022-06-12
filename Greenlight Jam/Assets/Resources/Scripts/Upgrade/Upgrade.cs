@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Upgrade : MonoBehaviour
 {
-    [SerializeField]
 	Locked_Panel lockPanel;
 	private void Awake()
 	{
-		switch (Helper.SceneName())
+		switch (Helper.SceneType())
 		{
-			case "The Hive":
+			case "Hive":
 				lockPanel = gameObject.GetComponentInChildren<Locked_Panel>();
 				break;
 			default:

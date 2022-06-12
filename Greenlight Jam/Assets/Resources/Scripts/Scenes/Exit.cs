@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using cakeslice;
 using System;
 
@@ -14,18 +13,23 @@ public class Exit : MonoBehaviour
 	private void Awake()
 	{
 		highlight = gameObject.AddComponent<Outline>();
+		highlight.
 		gameObject.tag = "EntranceExit";
 		if(!isLevelExit && newLocation == null)
 		{
 			Debug.LogError("New location not set.");
 		}
 	}
+	private void Start()
+	{
+		highlight.enabled = false; 
+	}
 
 	public void teleport()
 	{
 		if (isLevelExit)
 		{
-			SceneManager.LoadScene("The Hive");
+			Helper.changeScene(Helper.SUMMARY);
 		}
 		else
 		{

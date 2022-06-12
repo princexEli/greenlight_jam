@@ -20,101 +20,88 @@ public class Audio_Manager : MonoBehaviour
         }
         set { instance = value; }
     }
-	#endregion
+    #endregion
+    AudioSource[] musics;
+    int currMusic = 1;
 
-	public AudioSource music1, music2;
     public float transitionDuration;
-    bool use1 = true;
-    public AudioMixer mixer;
-    public static float maxDist;
+    AudioMixer mixer;
+
     [Header("Background Music")]
     public AudioClip mainMenu_theme;
     public AudioClip hive_theme, map_theme, indoor_theme;
 
     private static float volume = 10;
-    private static List<Audio_Wrapper> sources;
 
     private void Awake()
     {
-        sources = new List<Audio_Wrapper>();
-        addSource(music1);
-        addSource(music2);
+        mixer = Resources.Load("Sound/MusicMixer") as AudioMixer;
+        setupMusic();
     }
 
-    public Audio_Wrapper addSource(AudioSource source)
+    private void setupMusic()
     {
-        Audio_Wrapper temp = new Audio_Wrapper(source, volume, maxDist);
-        sources.Add(temp);
-        return temp;
+        mixer = Resources.Load("Sound/MusicMixer") as AudioMixer;
+        musics = new AudioSource[2];
+        musics[0] = gameObject.AddComponent<AudioSource>();
+        musics[0].outputAudioMixerGroup = mixer.FindMatchingGroups("Music1")[0];
+        musics[1] = gameObject.AddComponent<AudioSource>();
+        musics[1].outputAudioMixerGroup = mixer.FindMatchingGroups("Music2")[0];
+        
+        swapTheme();
     }
 
-    public void removeSource(Audio_Wrapper source)
+    public AudioSource createSource()
     {
-        sources.Remove(source);
+        AudioSource source = new AudioSource();
+        return source;
     }
+
 
     public void updateVolume(float val)
     {
         volume = val;
-        updateSources();
-    }
-
-    private void updateSources()
-    {
-        foreach(Audio_Wrapper source in sources)
-        {
-            source.updateVol(volume);
-        }
+        mixer.SetFloat("MasterVolume", val);
     }
 
 
     private AudioClip getSceneMusic()
 	{
-        string scene = Helper.SceneType();
-        if (scene == "Pause")
-		{
-            if(Helper.SceneName() == "Ground")
-			{
-                return map_theme;
-			}
-			else
-			{
-                return indoor_theme;
-			}
-		}
-        else if (scene == "The Hive")
-		{
-            return hive_theme;
-		}
-        else if (scene == "Main Menu")
+        switch (Helper.SceneType())
         {
-            return mainMenu_theme;
+            case "Menu":
+                return mainMenu_theme;
+            case "Hive":
+                return hive_theme;
+            case "Summary":
+                return hive_theme;
+            case "Ground":
+                return map_theme;
+            default:
+                return indoor_theme;
         }
-        else
-		{
-            Debug.LogError("No music for scene type " + scene + ". Will use main menu music instead.");
-            return mainMenu_theme;
-		}
 	}
 
     public void swapTheme()
     {
         AudioClip music = getSceneMusic();
         float vol1 = volume, vol2 = volume;
-		if (use1)
+		if (currMusic==0)
 		{
-            music2.clip = music;
-            vol1 = 0;
-            use1 = false;
+            musics[1].clip = music;
+            vol1 = -80;
+            currMusic = 1;
 		}
 		else
 		{
-            music1.clip = music;
-            vol2 = 0;
-            use1 = true;
+            musics[0].clip = music;
+            vol2 = -80;
+            currMusic = 0;
 		}
 
         StartCoroutine(FadeMixerGroup.StartFade(mixer, "Music1Volume", transitionDuration, vol1));
         StartCoroutine(FadeMixerGroup.StartFade(mixer, "Music2Volume", transitionDuration, vol2));
+        musics[0].Play();
+        musics[1].Play();
     }
 }

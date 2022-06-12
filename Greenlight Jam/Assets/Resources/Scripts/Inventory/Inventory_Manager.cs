@@ -22,34 +22,30 @@ public class Inventory_Manager : MonoBehaviour
     #endregion
 
     List<Inventory_Slot> slots;
-    bool iaLoaded = false;
 
     // Start is called before the first frame update
     void Awake()
     {
-        slots = new List<Inventory_Slot>();
+		slots = new List<Inventory_Slot>();
+		for (int i = 0; i < Helper.items.Length; i++)
+		{
+			Inventory_Slot temp = gameObject.AddComponent<Inventory_Slot>();
+			temp.initialize(i);
+			slots.Add(temp);
+		}
 	}
 
-	public void LoadPause()
+	public void Load()
 	{
-		int i = 0;
 		GameObject[] slotObj = GameObject.FindGameObjectsWithTag("Inventory");
 		if (slotObj.Length != Helper.items.Length)
 		{
 			Debug.LogError("Number of inventory slots (" + slotObj.Length + ") does not equal number of inventory types(" + Helper.items.Length + ").");
 		}
-		foreach (GameObject slot in slotObj)
+		for (int i = 0; i < slots.Count; i++)
 		{
-			Inventory_Slot temp = slot.GetComponent<Inventory_Slot>();
-			temp.setupPause(Helper.items[i]);
-			slots.Add(temp);
-			i++;
+			slots[i].addHost(slotObj[i]);
 		}
-	}
-
-    public void LoadHive()
-	{
-
 	}
 
 	public List<string> gainLoot(string name, int value)

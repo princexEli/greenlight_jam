@@ -14,19 +14,24 @@ public class Hive_Manager : MonoBehaviour
 		{
 			Helper.setupTest();
 		}
+		Audio_Manager.Instance.swapTheme();
 		missionManager = Mission_Manager.Instance;
 		upgradeManager = Upgrade_Manager.Instance;
-		
-		if (Helper.SceneType() == "The Hive")
+		Inventory_Manager.Instance.Load();
+
+		switch (Helper.SceneType())
 		{
-			Audio_Manager.Instance.swapTheme();
-			missionManager.LoadHive();
-			upgradeManager.LoadHive();
-		}
-		else if(Helper.SceneType() != "Main Menu") 
-		{
-			missionManager.LoadPause();
-			upgradeManager.LoadPause();
+			case "Hive":
+				Audio_Manager.Instance.swapTheme();
+				missionManager.LoadHive();
+				upgradeManager.LoadHive();
+				
+				break;
+			case "Menu":
+				missionManager.LoadPause();
+				upgradeManager.LoadPause();
+				break;
+			default: break;
 		}
 		
 	}
