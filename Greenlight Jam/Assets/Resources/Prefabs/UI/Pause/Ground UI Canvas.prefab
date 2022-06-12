@@ -221,8 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1f734852a669f4ca050a2c6e2afa23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRequired: 0
-  isTaken: 0
 --- !u!1 &558943833178166242
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &699582127732062876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1004,7 +1002,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1801402216}
         m_MethodName: OnMainMenuClick
         m_Mode: 1
         m_Arguments:
@@ -1213,7 +1211,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1801402216}
         m_MethodName: OnQuitClick
         m_Mode: 1
         m_Arguments:
@@ -1242,7 +1240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &699582129044210452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2973,8 +2971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1f734852a669f4ca050a2c6e2afa23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRequired: 0
-  isTaken: 0
 --- !u!1 &4968613200380384991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3229,7 +3225,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1801402216}
         m_MethodName: OnContinueClick
         m_Mode: 1
         m_Arguments:
@@ -3328,8 +3324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1f734852a669f4ca050a2c6e2afa23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRequired: 0
-  isTaken: 0
 --- !u!1 &5901848898724437481
 GameObject:
   m_ObjectHideFlags: 0
@@ -3418,8 +3412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1f734852a669f4ca050a2c6e2afa23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRequired: 0
-  isTaken: 0
 --- !u!1 &6475937234700389027
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,8 +3633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1f734852a669f4ca050a2c6e2afa23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRequired: 0
-  isTaken: 0
 --- !u!1 &6737969070400840557
 GameObject:
   m_ObjectHideFlags: 0
@@ -3810,8 +3800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1f734852a669f4ca050a2c6e2afa23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRequired: 0
-  isTaken: 0
 --- !u!1 &7010749888344069604
 GameObject:
   m_ObjectHideFlags: 0

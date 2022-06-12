@@ -34,23 +34,23 @@ public class Pause_Manager : MonoBehaviour
 	{
 		if (Input.GetKeyUp(KeyCode.Escape))
 		{
-			isPaused = !isPaused;
-			if (!isPaused)
-			{
-				Time.timeScale = 1;
-			}
-			else
-			{
-				Time.timeScale = 0;
-			}
-			pauseMenu.SetActive(isPaused);
-			isoMenu.SetActive(!isPaused);
+			OnContinueClick();
 		}
 	}
 
 	public void OnContinueClick()
 	{
-
+		isPaused = !isPaused;
+		if (!isPaused)
+		{
+			Time.timeScale = 1;
+		}
+		else
+		{
+			Time.timeScale = 0;
+		}
+		pauseMenu.SetActive(isPaused);
+		isoMenu.SetActive(!isPaused);
 	}
 	public void OnSaveClick()
 	{
@@ -62,10 +62,10 @@ public class Pause_Manager : MonoBehaviour
 	}
 	public void OnMainMenuClick()
 	{
-
+		Helper.changeScene(Helper.MENU);
 	}
 	public void OnQuitClick()
 	{
-
+		Helper.ExitGame();
 	}
 }
