@@ -17,7 +17,7 @@ public class Exit : MonoBehaviour
 		gameObject.tag = "EntranceExit";
 		if(!isLevelExit && newLocation == null)
 		{
-			Debug.LogError("New location not set.");
+			Debug.LogError("New location not set for "+name+".");
 		}
 	}
 	private void Start()

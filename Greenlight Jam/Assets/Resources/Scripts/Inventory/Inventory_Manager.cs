@@ -2,31 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory_Manager : MonoBehaviour
+public class Inventory_Manager : Data_Manager
 {
-    #region instance
-    private static Inventory_Manager instance;
-    public static Inventory_Manager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<Inventory_Manager>();
-            }
+	#region instance
+	private static Inventory_Manager instance;
+	public static Inventory_Manager Instance
+	{
+		get
+		{
+			if (instance == null)
+			{
+				instance = GameObject.FindObjectOfType<Inventory_Manager>();
+			}
 
-            return instance;
-        }
-        set { instance = value; }
-    }
-    #endregion
+			return instance;
+		}
+		set { instance = value; }
+	}
+	#endregion
 
-    List<Inventory_Slot> slots;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
+	List<Inventory_Slot> slots;
+	public override void Setup()
+	{
 		slots = new List<Inventory_Slot>();
+		tagName = "Inventory";
+		Initalize();
+	}
+	public override void Initalize()
+	{
 		for (int i = 0; i < Helper.items.Length; i++)
 		{
 			Inventory_Slot temp = gameObject.AddComponent<Inventory_Slot>();
@@ -34,29 +37,26 @@ public class Inventory_Manager : MonoBehaviour
 			slots.Add(temp);
 		}
 	}
-
-	public void Load()
+	public override void attachHosts(GameObject[] hosts)
 	{
-		GameObject[] slotObj = GameObject.FindGameObjectsWithTag("Inventory");
-		if (slotObj.Length != Helper.items.Length)
+		for(int i = 0; i < slots.Count; i++)
 		{
-			Debug.LogError("Number of inventory slots (" + slotObj.Length + ") does not equal number of inventory types(" + Helper.items.Length + ").");
-		}
-		for (int i = 0; i < slots.Count; i++)
-		{
-			slots[i].addHost(slotObj[i]);
+			slots[i].addHost(hosts[i]);
+			slots[i].Load();
 		}
 	}
-
 	public List<string> gainLoot(string name, int value)
 	{
         int pos = System.Array.IndexOf(Helper.items, name);
-        List<string> temp = slots[pos].addtoCurrent(value);
+        List<string> temp = slots[pos].AddToCurrent(value);
         return temp;
 	}
-
-    public void gainUnique()
+	public override void addData(Data d)
 	{
-        //hasUnique = true;
+		slots.Add((Inventory_Slot)d);
+	}
+	public override void removeData(Data d)
+	{
+		slots.Remove((Inventory_Slot)d);
 	}
 }

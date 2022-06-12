@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class Inventory_Slot : MonoBehaviour
+public class Inventory_Slot : Data
 {
     [SerializeField]
     string type;
@@ -17,41 +17,19 @@ public class Inventory_Slot : MonoBehaviour
 	}
     int current = 0, max=5;
     int hiveValue = 0;
-    TextMeshProUGUI display;
-    GameObject host;
+    TextMeshProUGUI display, before, after;
+
+	public override void Setup()
+	{
+        tagName = "Inventory";
+	}
 
 	public void initialize(int i)
 	{
         type = Helper.items[i];
     }
 
-    public void Load()
-	{
-		switch (Helper.SceneType())
-		{
-            case Helper.HIVE:
-                setupHive();
-                break;
-            case Helper.PAUSE:
-            case Helper.MAP:
-                setupPause();
-                break;
-            case Helper.SUMMARY:
-                setupSummary();
-                break;
-        }
-    }
-
-    public void addHost(GameObject obj)
-	{
-        Debug.Log("Added host");
-        host = obj;
-        Load();
-        updateDisplay();
-	}
-
-    TextMeshProUGUI before, after;
-    private void setupSummary()
+	public override void loadSummary()
 	{
         TextMeshProUGUI displayTitle = host.transform.Find("Title").gameObject.GetComponent<TextMeshProUGUI>();
         displayTitle.text = type;
@@ -67,31 +45,25 @@ public class Inventory_Slot : MonoBehaviour
         after.text = hiveValue.ToString();
     }
 
-	#region The Hive
-	public void setupHive()
-    {
-        TextMeshProUGUI displayTitle = host.transform.Find("Title").gameObject.GetComponent<TextMeshProUGUI>();
-        displayTitle.text = type;
-
-        display = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
-        updateDisplay();
-    }
-    public void addToHive()
+	public override void loadHive()
 	{
-
-	}
-    #endregion
-
-    #region Pause
-    public void setupPause()
-    {
         TextMeshProUGUI displayTitle = host.transform.Find("Title").gameObject.GetComponent<TextMeshProUGUI>();
         displayTitle.text = type;
 
         display = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
         updateDisplay();
     }
-    public List<string> addtoCurrent(int value)
+	
+    public override void loadPause()
+	{
+        TextMeshProUGUI displayTitle = host.transform.Find("Title").gameObject.GetComponent<TextMeshProUGUI>();
+        displayTitle.text = type;
+
+        display = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
+        updateDisplay();
+    }
+
+    public List<string> AddToCurrent(int value)
     {
         List<string> temp = new List<string>();
         if (current == max) return temp;
@@ -116,12 +88,6 @@ public class Inventory_Slot : MonoBehaviour
 
         return temp;
     }
-    #endregion
-
-
-   
-    
-    
 
     private void updateDisplay(){
         if (Helper.SceneType() == "Hive")
@@ -130,7 +96,6 @@ public class Inventory_Slot : MonoBehaviour
 
         }
         else if(Helper.SceneType() == Helper.SUMMARY)
-
         {
             display.text = "+" + current;
 

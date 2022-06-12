@@ -1,169 +1,163 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-public class Mission : MonoBehaviour
+public class Mission : Data
 {
-    public string title
+	public string title
 	{
 		get
 		{
-            string Title = "";
-            if (components.Count == 0) return "";
-            foreach(Mission_Component comp in components)
+			string Title = "";
+			if (components.Count == 0) return "";
+			foreach (Mission_Component comp in components)
 			{
-                string part = comp.title;
-                if(Title != "")
+				string part = comp.title;
+				if (Title != "")
 				{
-                    Title += "\\n";
+					Title += "\\n";
 				}
-                Title += part;
+				Title += part;
 			}
-            Title = Title.Replace("\\n", "\n");
-            return Title;
+			Title = Title.Replace("\\n", "\n");
+			return Title;
 		}
 	}
-    bool isRequired;
-    bool isTaken;
-    GameObject button;
-    Locked_Panel lockPanel;
-    bool isComplete
+	[SerializeField]
+	bool isRequired, isTaken;
+	Button button;
+	bool isComplete
 	{
 		get
 		{
-            foreach(Mission_Component c in components)
+			foreach (Mission_Component c in components)
 			{
-                if (!c.isComplete)
-                    return false;
+				if (!c.isComplete)
+					return false;
 			}
-            return true;
+			return true;
 		}
 	}
-    TextMeshProUGUI info;
+	TextMeshProUGUI info;
 
-    List<Mission_Component> components;
+	List<Mission_Component> components;
 
-	private void Awake()
+	public override void loadHive()
 	{
-        components = new List<Mission_Component>();
-        switch (Helper.SceneType())
-		{
-            case "Hive":
-                button = gameObject.transform.Find("Button").gameObject;
-                lockPanel = gameObject.GetComponentInChildren<Locked_Panel>();
-                break;
-            case "Pause":
-                info = gameObject.GetComponentInChildren<TextMeshProUGUI>();
-                break;
-            default:
-                break;
-        }
-    }
+		Debug.Log("loadHive");
+		button = host.transform.Find("Button").gameObject.GetComponent<Button>();
+		Debug.Log("Button");
+	}
 
-    private void loadMission()
+	public override void loadPause()
 	{
-        components = new List<Mission_Component>();
-        switch (Helper.SceneType())
-        {
-            case "Hive":
-                break;
-            case "Pause":
-                loadMission();
-                info.text = title;
-                break;
-            default:
-                break;
-        }
-        Mission m = Mission_Manager.Instance.getNextMission();
-        if(m == null)
+		info = host.GetComponentInChildren<TextMeshProUGUI>();
+	}
+	public override void Setup()
+	{
+		tagName = "Mission";
+		components = new List<Mission_Component>();
+	}
+
+	public void loadMission()
+	{
+		components = new List<Mission_Component>();
+		switch (Helper.SceneType())
 		{
-            gameObject.SetActive(false);
+			case "Hive":
+				break;
+			case "Pause":
+				info.text = title;
+				break;
+			default:
+				break;
+		}
+		Mission m = Mission_Manager.Instance.getNextMission();
+		if (m == null)
+		{
+			host.SetActive(false);
 		}
 		else
 		{
-            components = m.components;
+			components = m.components;
 
 		}
 	}
 
 	private class Mission_Component
 	{
-        string item;
-        int current = 0, required;
-        public bool isComplete
+		string item;
+		int current = 0, required;
+		public bool isComplete
 		{
 			get
 			{
-                return current >= required;
+				return current >= required;
 			}
 		}
 
-        public Mission_Component(string itemName, int requiredAmount)
+		public Mission_Component(string itemName, int requiredAmount)
 		{
-            required = requiredAmount;
-            item = itemName;
-        }
+			required = requiredAmount;
+			item = itemName;
+		}
 
-        public string title 
-        {
-            get {
+		public string title
+		{
+			get
+			{
 
-                return required + " " + item;
-            }
-        }
+				return required + " " + item;
+			}
+		}
 	}
 
-	public void setupMission(bool isMain, bool isLocked)
+	public override void Initalize(bool isMain, bool bool2)
 	{
-        components = new List<Mission_Component>();
-        isRequired = isMain;
-        isTaken = isMain;
-        lockPanel.enable = isLocked;
-        HashSet<string> componentItems = new HashSet<string>();
-        for (int i = 0; i < Helper.randomNum(Mission_Manager.Instance.maxComponents); i++) 
-        {
-            components.Add(new Mission_Component(Helper.randomItem(componentItems), Helper.randomNum(Mission_Manager.Instance.maxItems)));
-        }
+		isRequired = isMain;
+		isTaken = isMain;
 
-        updateButton();
-    }
+		HashSet<string> componentItems = new HashSet<string>();
+		for (int i = 0; i < Helper.randomNum(Mission_Manager.Instance.maxComponents); i++)
+		{
+			components.Add(new Mission_Component(Helper.randomItem(componentItems), Helper.randomNum(Mission_Manager.Instance.maxItems)));
+		}
+	}
 
-    public void updateButton()
+	public void updateButtonName()
 	{
-        Button button = this.button.GetComponent<Button>();
-        TextMeshProUGUI tmpro = this.button.GetComponentInChildren<TextMeshProUGUI>();
-        if (isRequired)
-        {
-            tmpro.text = "Required";
-            button.interactable = false;
-        }
-        else if (!isTaken)
-        {
-            tmpro.text = "Accept";
-        }
-        else if (!isComplete)
-        {
-            tmpro.text = "In Progress";
-            button.interactable = false;
-        }
-        else
-        {
-            tmpro.text = "Turn In";
-        }
-    }
+		TextMeshProUGUI tmpro = host.transform.Find("Button").gameObject.transform.GetComponentInChildren<TextMeshProUGUI>();
+		if (isRequired)
+		{
+			tmpro.text = "Required";
+			button.interactable = false;
+		}
+		else if (!isTaken)
+		{
+			tmpro.text = "Accept";
+		}
+		else if (!isComplete)
+		{
+			tmpro.text = "In Progress";
+			button.interactable = false;
+		}
+		else
+		{
+			tmpro.text = "Turn In";
+		}
+	}
 
-    public void onButtonClick()
+	public void onButtonClick()
 	{
 		if (!isTaken)
 		{
-            isTaken = true;
-            Mission_Manager.Instance.addMission(this);
-        }
-        else if (isComplete)
+			isTaken = true;
+			Mission_Manager.Instance.addData(this);
+		}
+		else if (isComplete)
 		{
-            Mission_Manager.Instance.removeMission(this);
-        }
-        updateButton();
+			Mission_Manager.Instance.removeData(this);
+		}
+		updateButtonName();
 	}
 }

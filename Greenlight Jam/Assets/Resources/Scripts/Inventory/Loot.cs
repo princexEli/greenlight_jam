@@ -45,7 +45,7 @@ public class Loot : MonoBehaviour
 
 		if (isUnique)
 		{
-			Inventory_Manager.Instance.gainUnique();
+			//Inventory_Manager.Instance.gainUnique();
 		}
 		else
 		{
