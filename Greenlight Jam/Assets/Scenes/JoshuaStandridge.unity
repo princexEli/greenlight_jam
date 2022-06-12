@@ -203,6 +203,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4758644399960868274, guid: 3600aa38c40bc914eb9e1f3bc016658a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6924521906845122090, guid: 3600aa38c40bc914eb9e1f3bc016658a,
         type: 3}
       propertyPath: m_Name
@@ -551,16 +556,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3006096755329383450, guid: f4be49a0b82dfad4bb043e5b370c1e27,
-        type: 3}
-      propertyPath: newLocation
-      value: 
-      objectReference: {fileID: 7083626493427664718}
-    - target: {fileID: 7445955504446450790, guid: f4be49a0b82dfad4bb043e5b370c1e27,
-        type: 3}
-      propertyPath: newLocation
-      value: 
-      objectReference: {fileID: 7083626493427664717}
     - target: {fileID: 7978964381061518128, guid: f4be49a0b82dfad4bb043e5b370c1e27,
         type: 3}
       propertyPath: m_RootOrder
@@ -621,25 +616,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: House Level
       objectReference: {fileID: 0}
-    - target: {fileID: 7978964381061518129, guid: f4be49a0b82dfad4bb043e5b370c1e27,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4be49a0b82dfad4bb043e5b370c1e27, type: 3}
---- !u!4 &7083626493427664717 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1798114457605537460, guid: f4be49a0b82dfad4bb043e5b370c1e27,
-    type: 3}
-  m_PrefabInstance: {fileID: 7083626493427664716}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7083626493427664718 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2730040840463755286, guid: f4be49a0b82dfad4bb043e5b370c1e27,
-    type: 3}
-  m_PrefabInstance: {fileID: 7083626493427664716}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9198011380608506846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -651,6 +629,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Store1-03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314928384632716331, guid: eb41f53d87132034ca95df7f6badc784,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8660246037562664593, guid: eb41f53d87132034ca95df7f6badc784,
         type: 3}
