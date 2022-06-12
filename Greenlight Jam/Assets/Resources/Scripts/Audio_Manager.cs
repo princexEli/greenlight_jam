@@ -114,7 +114,6 @@ public class Audio_Manager : MonoBehaviour
             use1 = true;
 		}
 
-        Debug.Log("Changing music to "+music);
         StartCoroutine(FadeMixerGroup.StartFade(mixer, "Music1Volume", transitionDuration, vol1));
         StartCoroutine(FadeMixerGroup.StartFade(mixer, "Music2Volume", transitionDuration, vol2));
     }

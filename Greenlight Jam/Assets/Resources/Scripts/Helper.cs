@@ -57,4 +57,10 @@ public static class Helper
         itemsToExclude.Add(item);
         return item;
     }
+
+    public static void setupTest()
+	{
+		GameObject doNotDestroy = Resources.Load("Prefabs/DontDestroyOnLoad") as GameObject;
+        GameObject.Instantiate(doNotDestroy,Vector3.zero, new Quaternion());
+    }
 }

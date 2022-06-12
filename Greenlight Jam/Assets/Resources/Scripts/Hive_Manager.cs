@@ -10,8 +10,13 @@ public class Hive_Manager : MonoBehaviour
 
 	private void Start()
 	{
+		if (Mission_Manager.Instance == null)
+		{
+			Helper.setupTest();
+		}
 		missionManager = Mission_Manager.Instance;
 		upgradeManager = Upgrade_Manager.Instance;
+		
 		if (Helper.SceneType() == "The Hive")
 		{
 			Audio_Manager.Instance.swapTheme();

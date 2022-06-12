@@ -896,8 +896,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2473363222426028}
-  - {fileID: 5884372506433072969}
   - {fileID: 1314520632386450824}
+  - {fileID: 5884372506433072969}
   - {fileID: 3522339631609705346}
   - {fileID: 8594562303223372387}
   - {fileID: 1314520630958984370}
@@ -2031,6 +2031,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205626562927977194}
     m_Modifications:
+    - target: {fileID: 5470023085795324781, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 25.05
+      objectReference: {fileID: 0}
     - target: {fileID: 5470023086357940237, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
         type: 3}
       propertyPath: m_Name
@@ -2049,7 +2054,7 @@ PrefabInstance:
     - target: {fileID: 5470023086357940238, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5470023086357940238, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
         type: 3}
@@ -2421,6 +2426,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205626562927977194}
     m_Modifications:
+    - target: {fileID: 5470023085795324781, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 25.05
+      objectReference: {fileID: 0}
     - target: {fileID: 5470023086357940237, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
         type: 3}
       propertyPath: m_Name
@@ -2681,10 +2691,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205626562927977194}
     m_Modifications:
+    - target: {fileID: 1673841291784458169, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5470023085795324781, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
         type: 3}
       propertyPath: m_text
       value: Xavier 'X' Rodriguez
+      objectReference: {fileID: 0}
+    - target: {fileID: 5470023085795324781, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 25.05
       objectReference: {fileID: 0}
     - target: {fileID: 5470023086357940237, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
         type: 3}
@@ -2704,7 +2724,7 @@ PrefabInstance:
     - target: {fileID: 5470023086357940238, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5470023086357940238, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
         type: 3}
@@ -2946,6 +2966,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205626562927977194}
     m_Modifications:
+    - target: {fileID: 5470023085795324781, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 25.05
+      objectReference: {fileID: 0}
     - target: {fileID: 5470023086357940237, guid: 6e87698f0c7cb7245ba82e92f7eadda3,
         type: 3}
       propertyPath: m_Name
