@@ -28,26 +28,31 @@ public class Inventory_Manager : MonoBehaviour
     void Awake()
     {
         slots = new List<Inventory_Slot>();
-    }
+	}
 
-    public void LoadPause()
+	public void LoadPause()
 	{
-        int i = 0;
-        GameObject[] slotObj = GameObject.FindGameObjectsWithTag("Inventory");
-        if (slotObj.Length != Helper.items.Length)
-        {
-            Debug.LogError("Number of inventory slots (" + slotObj.Length + ") does not equal number of inventory types(" + Helper.items.Length + ").");
-        }
-        foreach (GameObject slot in slotObj)
-        {
-            Inventory_Slot temp = slot.GetComponent<Inventory_Slot>();
-            temp.setupPause(Helper.items[i]);
-            slots.Add(temp);
-            i++;
-        }
-    }
+		int i = 0;
+		GameObject[] slotObj = GameObject.FindGameObjectsWithTag("Inventory");
+		if (slotObj.Length != Helper.items.Length)
+		{
+			Debug.LogError("Number of inventory slots (" + slotObj.Length + ") does not equal number of inventory types(" + Helper.items.Length + ").");
+		}
+		foreach (GameObject slot in slotObj)
+		{
+			Inventory_Slot temp = slot.GetComponent<Inventory_Slot>();
+			temp.setupPause(Helper.items[i]);
+			slots.Add(temp);
+			i++;
+		}
+	}
 
-    public List<string> gainLoot(string name, int value)
+    public void LoadHive()
+	{
+
+	}
+
+	public List<string> gainLoot(string name, int value)
 	{
         int pos = System.Array.IndexOf(Helper.items, name);
         List<string> temp = slots[pos].addtoCurrent(value);

@@ -50,7 +50,17 @@ public class Inventory_Slot : MonoBehaviour
         display = gameObject.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
         updateDisplay();
     }
-    
+
+    public void setupHive(string type)
+    {
+        this.type = type;
+        TextMeshProUGUI displayTitle = gameObject.transform.Find("Title").gameObject.GetComponent<TextMeshProUGUI>();
+        displayTitle.text = type;
+
+        display = gameObject.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
+        updateDisplay();
+    }
+
     private void updateDisplay(){
         display.text = current + "/" + max;
     }
