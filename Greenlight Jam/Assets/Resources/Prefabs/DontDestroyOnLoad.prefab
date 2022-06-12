@@ -111,44 +111,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
-    - target: {fileID: 1590275247918796935, guid: fcb4584cbea20204f81d9e53a4b9a5b6,
-        type: 3}
-      propertyPath: slots.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2560657878769363425, guid: fcb4584cbea20204f81d9e53a4b9a5b6,
-        type: 3}
-      propertyPath: mixer
-      value: 
-      objectReference: {fileID: 24100000, guid: 47d77bfc643a280499b760ff09a441ea,
-        type: 2}
-    - target: {fileID: 2560657878769363425, guid: fcb4584cbea20204f81d9e53a4b9a5b6,
-        type: 3}
-      propertyPath: music1
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2560657878769363425, guid: fcb4584cbea20204f81d9e53a4b9a5b6,
-        type: 3}
-      propertyPath: music2
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2560657878769363425, guid: fcb4584cbea20204f81d9e53a4b9a5b6,
-        type: 3}
-      propertyPath: tempSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2560657878769363425, guid: fcb4584cbea20204f81d9e53a4b9a5b6,
-        type: 3}
-      propertyPath: backgroundMusic
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2560657878769363425, guid: fcb4584cbea20204f81d9e53a4b9a5b6,
-        type: 3}
-      propertyPath: transitionDuration
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 140147294666597135, guid: fcb4584cbea20204f81d9e53a4b9a5b6, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcb4584cbea20204f81d9e53a4b9a5b6, type: 3}
 --- !u!4 &791935195769610370 stripped
 Transform:
