@@ -13,6 +13,7 @@ public class Pause_Manager : MonoBehaviour
 
 	private void Start()
 	{
+		Audio_Manager.Instance.swapTheme();
 		isoMenu = GameObject.Find("Iso UI");
 		inventoryManager = Inventory_Manager.Instance;
 		inventoryManager.LoadPause();
