@@ -121,6 +121,26 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &766903570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4462831898573845117, guid: 3600aa38c40bc914eb9e1f3bc016658a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1973214548140341437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &766903575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766903570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123260af258ce2e4abb552ebfdb2c212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLevelExit: 1
+  newLocation: {fileID: 0}
 --- !u!1001 &1973214548140341437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,6 +201,16 @@ PrefabInstance:
     - target: {fileID: 2009852989532393052, guid: 3600aa38c40bc914eb9e1f3bc016658a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462831898573845117, guid: 3600aa38c40bc914eb9e1f3bc016658a,
+        type: 3}
+      propertyPath: m_TagString
+      value: EntranceExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4758644399960868270, guid: 3600aa38c40bc914eb9e1f3bc016658a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6924521906845122090, guid: 3600aa38c40bc914eb9e1f3bc016658a,

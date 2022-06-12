@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Office.unity
     guid: 03d2a391b71767949917275af3b8b9e0
+  - enabled: 1
+    path: Assets/Scenes/Mission End.unity
+    guid: 8a70c02e03a577048afa774646bfabbd
   m_configObjects: {}
