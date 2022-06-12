@@ -121,9 +121,9 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!82 &1496563911 stripped
+--- !u!82 &224693535 stripped
 AudioSource:
-  m_CorrespondingSourceObject: {fileID: 791935194244724256, guid: 4367e7d0145038144aad61eda497afe1,
+  m_CorrespondingSourceObject: {fileID: 1205829961129496377, guid: 4367e7d0145038144aad61eda497afe1,
     type: 3}
   m_PrefabInstance: {fileID: 791935195738928871}
   m_PrefabAsset: {fileID: 0}
@@ -210,6 +210,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1763662097 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8952811295894065434, guid: 4367e7d0145038144aad61eda497afe1,
+    type: 3}
+  m_PrefabInstance: {fileID: 791935195738928871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &791935195738928871
 PrefabInstance:
   m_ObjectHideFlags: 0
