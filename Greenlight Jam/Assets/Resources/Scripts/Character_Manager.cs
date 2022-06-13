@@ -96,8 +96,6 @@ public class Character_Manager : MonoBehaviour
             flip(horizontalInput);
             animator.SetFloat("movement", Mathf.Abs(horizontalInput + verticalInput));
         }
-
-        Helper.ExitGame();
     }
 
     private void flip(float horizontalInput)

@@ -18,6 +18,9 @@ public class Main_Menu : MonoBehaviour
 
 	private void Update()
 	{
-		Helper.ExitGame();
+		if (Input.GetKeyUp(KeyCode.Escape))
+		{
+			Helper.ExitGame();
+		}
 	}
 }

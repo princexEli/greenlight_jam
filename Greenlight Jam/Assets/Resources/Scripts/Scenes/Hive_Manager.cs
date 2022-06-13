@@ -43,6 +43,9 @@ public class Hive_Manager : MonoBehaviour
 
 	private void Update()
 	{
-		Helper.ExitGame();
+		if (Input.GetKeyUp(KeyCode.Escape))
+		{
+			Helper.ExitGame();
+		}
 	}
 }
