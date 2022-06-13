@@ -10,14 +10,24 @@ public class Audio_Manager : MonoBehaviour
     int currMusic = 1;
 
     AudioMixer mixer;
-
+    AudioClip indoor_theme, hive_theme, map_theme, menu_theme, summary_theme;
     private static float volume = 10;
 
     private void Awake()
     {
         manager = Game_Manager.Instance;
         mixer = Resources.Load("Sound/MusicMixer") as AudioMixer;
+        getThemes();
         setupMusic();
+    }
+
+    private void getThemes()
+    {
+        hive_theme = Resources.Load("Sound/Hive_Theme") as AudioClip;
+        map_theme = Resources.Load("Sound/Map_Theme") as AudioClip;
+        menu_theme = Resources.Load("Sound/Menu_Theme") as AudioClip;
+        summary_theme = Resources.Load("Sound/Menu_Theme") as AudioClip;
+        indoor_theme = Resources.Load("Sound/Map_Theme") as AudioClip;
     }
 
     private void setupMusic()
@@ -47,15 +57,15 @@ public class Audio_Manager : MonoBehaviour
         switch (Helper.SceneType())
         {
             case Helper.MENU:
-                return manager.menu_theme;
+                return menu_theme;
             case Helper.HIVE:
-                return manager.hive_theme;
+                return hive_theme;
             case Helper.SUMMARY:
-                return manager.menu_theme;
+                return summary_theme;
             case Helper.MAP:
-                return manager.map_theme;
+                return map_theme;
             default:
-                return manager.indoor_theme;
+                return indoor_theme;
         }
 	}
 

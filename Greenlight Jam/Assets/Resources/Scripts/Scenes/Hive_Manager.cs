@@ -5,40 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class Hive_Manager : MonoBehaviour
 {
-    Mission_Manager missionManager;
-    Upgrade_Manager upgradeManager;
+	Game_Manager manager;
 
 	private void Start()
 	{
-		if (Mission_Manager.Instance == null)
-		{
-			Helper.setupTest();
-		}
-		Audio_Manager.Instance.swapTheme();
-		missionManager = Mission_Manager.Instance;
-		upgradeManager = Upgrade_Manager.Instance;
-		Inventory_Manager.Instance.Load();
-
-		switch (Helper.SceneType())
-		{
-			case "Hive":
-				Audio_Manager.Instance.swapTheme();
-				missionManager.LoadHive();
-				upgradeManager.LoadHive();
-				
-				break;
-			case "Menu":
-				missionManager.LoadPause();
-				upgradeManager.LoadPause();
-				break;
-			default: break;
-		}
-		
+		manager = Game_Manager.Instance;
+		manager.LoadScene();
 	}
 
 	public void onButtonClick()
 	{
-		SceneManager.LoadScene("Ground");
+		Helper.changeScene(Helper.MAP);
 	}
 
 	private void Update()

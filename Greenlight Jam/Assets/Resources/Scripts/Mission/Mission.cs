@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Mission : Data
 {
+	Mission_Manager manager;
+	private void Start()
+	{
+		manager = Game_Manager.Instance.mission;
+	}
 	public string title
 	{
 		get
@@ -72,7 +77,7 @@ public class Mission : Data
 			default:
 				break;
 		}
-		Mission m = Mission_Manager.Instance.getNextMission();
+		Mission m = manager.getNextMission();
 		if (m == null)
 		{
 			host.SetActive(false);
@@ -118,9 +123,9 @@ public class Mission : Data
 		isTaken = isMain;
 
 		HashSet<string> componentItems = new HashSet<string>();
-		for (int i = 0; i < Helper.randomNum(Mission_Manager.Instance.maxComponents); i++)
+		for (int i = 0; i < Helper.randomNum(manager.maxComponents); i++)
 		{
-			components.Add(new Mission_Component(Helper.randomItem(componentItems), Helper.randomNum(Mission_Manager.Instance.maxItems)));
+			components.Add(new Mission_Component(Helper.randomItem(componentItems), Helper.randomNum(manager.maxItems)));
 		}
 	}
 
@@ -152,11 +157,11 @@ public class Mission : Data
 		if (!isTaken)
 		{
 			isTaken = true;
-			Mission_Manager.Instance.addData(this);
+			manager.addData(this);
 		}
 		else if (isComplete)
 		{
-			Mission_Manager.Instance.removeData(this);
+			manager.removeData(this);
 		}
 		updateButtonName();
 	}

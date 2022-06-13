@@ -5,30 +5,13 @@ using UnityEngine;
 
 public class Mission_Manager : Data_Manager
 {
-    #region instance
-    private static Mission_Manager instance;
-    public static Mission_Manager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<Mission_Manager>();
-            }
-
-            return instance;
-        }
-        set { instance = value; }
-    }
-    #endregion
-
-    public List<string> items;
     List<Mission> activeList, availableList;
     public int maxComponents = 3, maxItems = 5;
     int unlockedMissionSlots = 1;
 
 	public override void Setup()
 	{
+        tagName = "Mission";
         activeList = new List<Mission>();
         availableList= new List<Mission>();
     }
@@ -53,10 +36,10 @@ public class Mission_Manager : Data_Manager
 	{
         hosts = GameObject.FindGameObjectsWithTag("Mission");
         
-        if (maxComponents > items.Count)
+        if (maxComponents > Game_Manager.Instance.lootTypes.Length)
 		{
             Debug.LogWarning("maxComponent will be set to items.Count, since the value entered will create an infinate loop");
-            maxComponents = items.Count;
+            maxComponents = Game_Manager.Instance.lootTypes.Length;
 		}
 
         for (int i = 0; i < hosts.Length; i++)

@@ -4,27 +4,20 @@ using UnityEngine;
 
 public class Pause_Manager : MonoBehaviour
 {
-	Mission_Manager missionManager;
-	Upgrade_Manager upgradeManager;
-	Inventory_Manager inventoryManager;
+	Game_Manager manager;
 	GameObject pauseMenu, isoMenu;
 	bool isPaused = false;
 	bool isLoaded = false;
 
 	private void Start()
 	{
-		if (Mission_Manager.Instance == null)
-		{
-			Helper.setupTest();
-		}
-		Audio_Manager.Instance.swapTheme();
+		manager = Game_Manager.Instance;
+
+		manager.audio.swapTheme();
 		isoMenu = GameObject.Find("Iso UI");
-		inventoryManager = Inventory_Manager.Instance;
-		inventoryManager.Load();
-		missionManager = Mission_Manager.Instance;
-		missionManager.LoadPause();
-		upgradeManager = Upgrade_Manager.Instance;
-		upgradeManager.LoadPause();
+		manager.inventory.Load();
+		manager.mission.LoadPause();
+		manager.upgrade.LoadPause();
 		pauseMenu = GameObject.Find("Pause UI");
 		pauseMenu.SetActive(isPaused);
 

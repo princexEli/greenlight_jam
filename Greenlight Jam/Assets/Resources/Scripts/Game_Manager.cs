@@ -14,6 +14,10 @@ public class Game_Manager : MonoBehaviour
             if (instance == null)
             {
                 instance = GameObject.FindObjectOfType<Game_Manager>();
+                if(instance == null)
+				{
+                    Helper.setupTest();
+				}
             }
 
             return instance;
@@ -23,21 +27,46 @@ public class Game_Manager : MonoBehaviour
     #endregion
     
     Mission_Manager missionM;
+    public Mission_Manager mission
+	{
+		get
+		{
+            return missionM;
+		}
+	}
     [Header("Mission Manager")]
     public string[] lootTypes = { "Scrap Metal", "Med(s)", "Electronic(s)", "Trinket(s)" };
     
     Upgrade_Manager upgradeM;
+    public Upgrade_Manager upgrade
+    {
+        get
+        {
+            return upgradeM;
+        }
+    }
     [Header("Upgrade Manager")]
 
     Inventory_Manager inventoryM;
+    public Inventory_Manager inventory
+    {
+        get
+        {
+            return inventoryM;
+        }
+    }
     [Header("Inventory Manager")]
 
     Audio_Manager audioM;
+    public new Audio_Manager audio
+    {
+        get
+        {
+            return audioM;
+        }
+    }
     [Header("Audio Manager")]
     public float transitionDuration;
-    public AudioClip indoor_theme;
-    public AudioClip hive_theme, map_theme, menu_theme;
-
 
     private void Awake()
 	{
@@ -53,10 +82,16 @@ public class Game_Manager : MonoBehaviour
         audioM = gameObject.AddComponent<Audio_Manager>();
     }
 
-    private void getThemes()
+    public void LoadScene()
 	{
-        hive_theme = Resources.Load("Sound/Hive_Theme") as AudioClip;
-        map_theme = Resources.Load("Sound/Map_Theme") as AudioClip;
-        menu_theme = Resources.Load("Sound/Menu_Theme") as AudioClip;
-    }
+        audioM.swapTheme();
+        missionM.Load();
+        upgradeM.LoadHive();
+        inventoryM.Load();
+	}
+
+    public void updateVolume(float val)
+	{
+        audioM.updateVolume(val);
+	}
 }
