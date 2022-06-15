@@ -15,18 +15,22 @@ public class Inventory_Slot : Data
             return current == max;
 		}
 	}
-    int current = 0, max=5;
+    [SerializeField]
+    int current = 0;
+    int max;
     int hiveValue = 0;
     TextMeshProUGUI display, before, after;
 
-	public override void Setup()
+	public override void awake()
 	{
         tagName = "Inventory";
+        max = Game_Manager.Instance.startingInventorySize;
 	}
 
 	public void initialize(int i)
 	{
         type = Helper.items[i];
+        gameObject.name = type + " Slot";
     }
 
 	public override void loadSummary()

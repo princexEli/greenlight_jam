@@ -6,11 +6,7 @@ public class Summary_Manager : MonoBehaviour
 {
     void Start()
     {
-        if(Inventory_Manager.Instance == null)
-		{
-            Helper.setupTest();
-		}
-        Inventory_Manager.Instance.Load();
+        //Inventory_Manager.Instance.BeginLoad();
     }
 
     public void OnClickContinue()

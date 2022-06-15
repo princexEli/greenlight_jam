@@ -5,17 +5,77 @@ using UnityEngine;
 
 public class Mission_Manager : Data_Manager
 {
-    List<Mission> activeList, availableList;
-    public int maxComponents = 3, maxItems = 5;
-    int unlockedMissionSlots = 1;
+    int currMission = 0;
 
-	public override void Setup()
+    List<Mission> activeList, availableList;
+    GameObject activeMissions, availableMissions;
+
+    public override void awake()
 	{
         tagName = "Mission";
+        
         activeList = new List<Mission>();
         availableList= new List<Mission>();
     }
-	public void LoadPause()
+
+    public override void Initalize()
+    {
+        availableMissions = new GameObject("Available Missions");
+        availableMissions.transform.parent = gameObject.transform;
+
+        activeMissions = new GameObject("Active Missions");
+        activeMissions.transform.parent = gameObject.transform;
+    }
+
+    public override void attachHosts(GameObject[] hosts)
+	{
+        if (activeList.Count != 0)
+        {
+            LoadActive(hosts);
+        }
+        if (Helper.SceneType() == "Hive")
+		{
+            CreateAvailable(hosts);
+		}
+        
+    }
+
+    private void LoadActive(GameObject[] hosts) { }
+    
+    private void CreateAvailable(GameObject[] hosts) 
+    {
+        int size = hosts.Length;
+        if (hosts.Length > unlocked)
+        {
+            size = unlocked;
+        }
+
+        for (int i = 0; i < size; i++)
+        {
+            bool isFirst = false;
+            if (i == 0)
+            {
+                isFirst = true;
+            }
+           
+            Mission temp = new Mission();
+            temp.Initalize(isFirst);
+
+            availableList[i].addHost(hosts[i]);
+            availableList[i].Load();
+
+            if (isFirst)
+                activeList.Add(temp);
+            TextMeshProUGUI tmpro = hosts[i].GetComponentInChildren<TextMeshProUGUI>();
+
+            tmpro.text = temp.ComponentsText;
+        }
+    }
+
+
+
+
+    public void LoadPause()
 	{
         foreach(Mission a in activeList)
 		{
@@ -23,7 +83,7 @@ public class Mission_Manager : Data_Manager
         }
     }
 
-    int currMission = 0;
+ 
     public Mission getNextMission()
 	{
         if (currMission == activeList.Count) return null;
@@ -32,32 +92,7 @@ public class Mission_Manager : Data_Manager
         return m;
 	}
 
-	public void LoadHive()
+	public override void Load()
 	{
-        hosts = GameObject.FindGameObjectsWithTag("Mission");
-        
-        if (maxComponents > Game_Manager.Instance.lootTypes.Length)
-		{
-            Debug.LogWarning("maxComponent will be set to items.Count, since the value entered will create an infinate loop");
-            maxComponents = Game_Manager.Instance.lootTypes.Length;
-		}
-
-        for (int i = 0; i < hosts.Length; i++)
-		{
-            bool isFirst = false;
-            if(i == 0)
-			{
-                isFirst = true;
-			}
-
-            Mission temp = hosts[i].GetComponent<Mission>();
-            temp.Initalize(isFirst, (i >= unlockedMissionSlots));
-            availableList.Add(temp);
-            if (isFirst)
-                activeList.Add(temp);
-            TextMeshProUGUI tmpro = hosts[i].GetComponentInChildren<TextMeshProUGUI>();
-
-            tmpro.text = temp.title;
-        }
 	}
 }

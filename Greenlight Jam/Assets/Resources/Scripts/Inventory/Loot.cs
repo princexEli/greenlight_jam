@@ -44,7 +44,7 @@ public class Loot : MonoBehaviour
 		{
 			foreach (string s in loot.Keys)
 			{
-				temp.AddRange(Inventory_Manager.Instance.gainLoot(s, loot[s]));
+				temp.AddRange(Game_Manager.Instance.inventory.gainLoot(s, loot[s]));
 			}
 		}
 

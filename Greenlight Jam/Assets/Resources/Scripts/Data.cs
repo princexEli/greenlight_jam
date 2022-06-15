@@ -15,10 +15,18 @@ public class Data: MonoBehaviour
 
     private void Awake()
     {
-        Setup();
+        awake();
     }
+    public virtual void awake() { }
 
-    public virtual void Initalize(bool bool1, bool bool2)
+    private void Start()
+	{
+        start();
+	}
+    public virtual void start() { }
+
+
+    public virtual void Initalize(bool bool1)
     {
 
     }
@@ -42,25 +50,9 @@ public class Data: MonoBehaviour
         }
     }
 
-    public virtual void Setup()
-    {
-
-    }
-
-    public virtual void loadPause()
-    {
-       
-    }
-    public virtual void loadMap()
-    {
-
-    }
-    public virtual void loadSummary()
-    {
-
-    }
-    public virtual void loadHive()
-    {
-        Debug.Log("rgs");
-    }
+    
+    public virtual void loadPause() { }
+    public virtual void loadMap() { }
+    public virtual void loadSummary() { }
+    public virtual void loadHive() { }
 }

@@ -4,12 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Mission : Data
 {
-	Mission_Manager manager;
-	private void Start()
-	{
-		manager = Game_Manager.Instance.mission;
-	}
-	public string title
+	List<Mission_Component> components;
+	public string ComponentsText
 	{
 		get
 		{
@@ -28,9 +24,9 @@ public class Mission : Data
 			return Title;
 		}
 	}
-	[SerializeField]
 	bool isRequired, isTaken;
 	Button button;
+	TextMeshProUGUI info;
 	bool isComplete
 	{
 		get
@@ -43,26 +39,39 @@ public class Mission : Data
 			return true;
 		}
 	}
-	TextMeshProUGUI info;
 
-	List<Mission_Component> components;
-
-	public override void loadHive()
-	{
-		Debug.Log("loadHive");
-		button = host.transform.Find("Button").gameObject.GetComponent<Button>();
-		Debug.Log("Button");
-	}
-
-	public override void loadPause()
-	{
-		info = host.GetComponentInChildren<TextMeshProUGUI>();
-	}
-	public override void Setup()
+	public override void awake()
 	{
 		tagName = "Mission";
 		components = new List<Mission_Component>();
 	}
+
+	public override void loadHive()
+	{
+		findChildButton();
+	}
+	public override void loadSummary()
+	{
+		findChildText();
+		findChildButton();
+	}
+	public override void loadPause()
+	{
+		findChildText();
+		findChildButton();
+	}
+
+	private void findChildButton()
+	{
+		button = host.transform.Find("Button").gameObject.GetComponent<Button>();
+	}
+	private void findChildText()
+	{
+		info = host.GetComponentInChildren<TextMeshProUGUI>();
+	}
+
+	
+	
 
 	public void loadMission()
 	{
@@ -72,12 +81,12 @@ public class Mission : Data
 			case "Hive":
 				break;
 			case "Pause":
-				info.text = title;
+				info.text = ComponentsText;
 				break;
 			default:
 				break;
 		}
-		Mission m = manager.getNextMission();
+		Mission m = Game_Manager.Instance.mission.getNextMission();
 		if (m == null)
 		{
 			host.SetActive(false);
@@ -89,43 +98,15 @@ public class Mission : Data
 		}
 	}
 
-	private class Mission_Component
-	{
-		string item;
-		int current = 0, required;
-		public bool isComplete
-		{
-			get
-			{
-				return current >= required;
-			}
-		}
-
-		public Mission_Component(string itemName, int requiredAmount)
-		{
-			required = requiredAmount;
-			item = itemName;
-		}
-
-		public string title
-		{
-			get
-			{
-
-				return required + " " + item;
-			}
-		}
-	}
-
-	public override void Initalize(bool isMain, bool bool2)
+	public override void Initalize(bool isMain)
 	{
 		isRequired = isMain;
 		isTaken = isMain;
 
 		HashSet<string> componentItems = new HashSet<string>();
-		for (int i = 0; i < Helper.randomNum(manager.maxComponents); i++)
+		for (int i = 0; i < Helper.randomNum(Game_Manager.Instance.maxComponents); i++)
 		{
-			components.Add(new Mission_Component(Helper.randomItem(componentItems), Helper.randomNum(manager.maxItems)));
+			components.Add(new Mission_Component(Helper.randomItem(componentItems), Helper.randomNum(Game_Manager.Instance.maxLootType)));
 		}
 	}
 
@@ -157,11 +138,11 @@ public class Mission : Data
 		if (!isTaken)
 		{
 			isTaken = true;
-			manager.addData(this);
+			Game_Manager.Instance.mission.addData(this);
 		}
 		else if (isComplete)
 		{
-			manager.removeData(this);
+			Game_Manager.Instance.mission.removeData(this);
 		}
 		updateButtonName();
 	}

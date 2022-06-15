@@ -33,13 +33,15 @@ public class Audio_Manager : MonoBehaviour
     private void setupMusic()
     {
         mixer = Resources.Load("Sound/MusicMixer") as AudioMixer;
-       
-        GameObject temp =new GameObject("Music");
-        temp.transform.parent = gameObject.transform;
-        
         musics = new AudioSource[2];
+
+        GameObject temp =new GameObject("Music1");
+        temp.transform.parent = gameObject.transform;
         musics[0] = temp.AddComponent<AudioSource>();
         musics[0].outputAudioMixerGroup = mixer.FindMatchingGroups("Music1")[0];
+        
+        temp = new GameObject("Music2");
+        temp.transform.parent = gameObject.transform;
         musics[1] = temp.AddComponent<AudioSource>();
         musics[1].outputAudioMixerGroup = mixer.FindMatchingGroups("Music2")[0];
         

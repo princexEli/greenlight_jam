@@ -6,20 +6,24 @@ public class Data_Manager : MonoBehaviour
 {
     protected GameObject[] hosts;
     protected string tagName;
-    int unlocked = 1;
+    protected int unlocked = 1;
     int maxData = 4;
 
     private void Awake()
     {
-        Setup();
+        awake();
+        Initalize();
     }
+    public virtual void awake() { }
 
-    public void Load()
+    public void BeginLoad()
     {
         hosts = GameObject.FindGameObjectsWithTag(tagName);
         attachHosts(hosts);
+        Load();
     }
-    public virtual void Setup() { }
+    public virtual void Load() { }
+    
     public virtual void Initalize() { }
     public virtual void attachHosts(GameObject[] hosts) { }
     public virtual void addData(Data d) { }

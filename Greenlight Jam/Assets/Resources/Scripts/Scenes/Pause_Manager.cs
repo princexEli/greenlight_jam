@@ -15,7 +15,7 @@ public class Pause_Manager : MonoBehaviour
 
 		manager.audio.swapTheme();
 		isoMenu = GameObject.Find("Iso UI");
-		manager.inventory.Load();
+		manager.inventory.BeginLoad();
 		manager.mission.LoadPause();
 		manager.upgrade.LoadPause();
 		pauseMenu = GameObject.Find("Pause UI");
