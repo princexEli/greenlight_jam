@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Data: MonoBehaviour
 {
+    [SerializeField]
     protected GameObject host;
     protected string tagName;
 
@@ -50,7 +51,6 @@ public class Data: MonoBehaviour
         }
     }
 
-    
     public virtual void loadPause() { }
     public virtual void loadMap() { }
     public virtual void loadSummary() { }

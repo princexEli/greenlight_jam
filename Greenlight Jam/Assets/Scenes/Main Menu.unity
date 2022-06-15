@@ -247,11 +247,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f079722829f8345a6d16c9127ac55a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLoot: 1
+  maxComponents: 3
+  maxLootType: 5
   lootTypes:
   - Scrap Metal
   - Med(s)
   - Electronic(s)
   - Trinket(s)
+  unlockedMissions: 2
+  unlockedUpgrades: 0
+  startingInventorySize: 5
   transitionDuration: 1
 --- !u!1001 &1391716256788798860
 PrefabInstance:

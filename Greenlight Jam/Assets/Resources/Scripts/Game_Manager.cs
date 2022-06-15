@@ -41,6 +41,7 @@ public class Game_Manager : MonoBehaviour
     public int maxComponents = 3;
     public int maxLootType = 5;
     public string[] lootTypes = { "Scrap Metal", "Med(s)", "Electronic(s)", "Trinket(s)" };
+    public int unlockedMissions = 1;
 	#endregion
 
 	#region Upgrade Manager
@@ -53,6 +54,7 @@ public class Game_Manager : MonoBehaviour
         }
     }
     [Header("Upgrade Manager")]
+    public int unlockedUpgrades = 0;
     #endregion
 
     #region Inventory Manager

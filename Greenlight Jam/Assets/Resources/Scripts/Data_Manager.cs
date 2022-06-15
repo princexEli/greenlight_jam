@@ -6,7 +6,6 @@ public class Data_Manager : MonoBehaviour
 {
     protected GameObject[] hosts;
     protected string tagName;
-    protected int unlocked = 1;
     int maxData = 4;
 
     private void Awake()

@@ -46,73 +46,32 @@ public class Mission : Data
 		components = new List<Mission_Component>();
 	}
 
-	public override void loadHive()
-	{
-		findChildButton();
-	}
-	public override void loadSummary()
-	{
-		findChildText();
-		findChildButton();
-	}
-	public override void loadPause()
-	{
-		findChildText();
-		findChildButton();
-	}
-
-	private void findChildButton()
-	{
-		button = host.transform.Find("Button").gameObject.GetComponent<Button>();
-	}
-	private void findChildText()
-	{
-		info = host.GetComponentInChildren<TextMeshProUGUI>();
-	}
-
-	
-	
-
-	public void loadMission()
-	{
-		components = new List<Mission_Component>();
-		switch (Helper.SceneType())
-		{
-			case "Hive":
-				break;
-			case "Pause":
-				info.text = ComponentsText;
-				break;
-			default:
-				break;
-		}
-		Mission m = Game_Manager.Instance.mission.getNextMission();
-		if (m == null)
-		{
-			host.SetActive(false);
-		}
-		else
-		{
-			components = m.components;
-
-		}
-	}
-
 	public override void Initalize(bool isMain)
 	{
+		if (components == null) awake();
 		isRequired = isMain;
 		isTaken = isMain;
 
 		HashSet<string> componentItems = new HashSet<string>();
 		for (int i = 0; i < Helper.randomNum(Game_Manager.Instance.maxComponents); i++)
 		{
-			components.Add(new Mission_Component(Helper.randomItem(componentItems), Helper.randomNum(Game_Manager.Instance.maxLootType)));
+			string item = Helper.randomItem(componentItems);
+			int amount = Helper.randomNum(Game_Manager.Instance.maxLootType);
+			Mission_Component c = new Mission_Component(item, amount);
+			components.Add(c);
 		}
+	}
+
+	public override void loadHive()
+	{
+		button = host.transform.Find("Button").gameObject.GetComponent<Button>();
+		button.onClick.AddListener(delegate () { onButtonClick(); });
+		updateButtonName();
 	}
 
 	public void updateButtonName()
 	{
-		TextMeshProUGUI tmpro = host.transform.Find("Button").gameObject.transform.GetComponentInChildren<TextMeshProUGUI>();
+		TextMeshProUGUI tmpro =button.gameObject.transform.GetComponentInChildren<TextMeshProUGUI>();
 		if (isRequired)
 		{
 			tmpro.text = "Required";
@@ -138,6 +97,7 @@ public class Mission : Data
 		if (!isTaken)
 		{
 			isTaken = true;
+			transform.parent = Game_Manager.Instance.mission.activeMissions.transform;
 			Game_Manager.Instance.mission.addData(this);
 		}
 		else if (isComplete)
