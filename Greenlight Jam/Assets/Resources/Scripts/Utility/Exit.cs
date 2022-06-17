@@ -7,17 +7,29 @@ using System;
 public class Exit : MonoBehaviour
 {
     public bool isLevelExit;
-	public Transform newLocation;
+	Transform newLocation;
 	Outline highlight;
 
 	private void Awake()
 	{
 		highlight = gameObject.AddComponent<Outline>();
-		highlight.
 		gameObject.tag = "EntranceExit";
 		if(!isLevelExit && newLocation == null)
 		{
-			Debug.LogError("New location not set for "+name+".");
+			GameObject[] temp = GameObject.FindGameObjectsWithTag("Teleport");
+			foreach(GameObject t in temp)
+			{
+				if(t.name == gameObject.name)
+				{
+					newLocation = t.transform;
+					break;
+				}
+			}
+			if(newLocation == null)
+			{
+				Debug.LogError("Could not find gameobject called " + name + " that also has the teleport tag.");
+			}
+			
 		}
 	}
 	private void Start()

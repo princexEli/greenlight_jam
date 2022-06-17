@@ -257,5 +257,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6782983329205879840, guid: 53915d31bfb38784bb23bf149ed4aa80, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 53915d31bfb38784bb23bf149ed4aa80, type: 3}
+--- !u!1 &783817270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8340790015919417045, guid: 53915d31bfb38784bb23bf149ed4aa80,
+    type: 3}
+  m_PrefabInstance: {fileID: 783817269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &783817271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783817270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42497b1b2542dcc4687ae66729c34369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

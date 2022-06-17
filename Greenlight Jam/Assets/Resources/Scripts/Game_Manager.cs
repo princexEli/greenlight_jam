@@ -108,13 +108,13 @@ public class Game_Manager : MonoBehaviour
         audioM = temp.AddComponent<Audio_Manager>();
     }
 
-    public void LoadScene()
+    public void Load()
 	{
         audioM.swapTheme();
-        inventoryM.BeginLoad();
-        missionM.BeginLoad();
+        inventoryM.Load();
+        missionM.Load();
         upgradeM.LoadHive();
-	}
+    }
 
     public void updateVolume(float val)
 	{
