@@ -295,6 +295,7 @@ MonoBehaviour:
   unlockedUpgrades: 0
   startingInventorySize: 5
   transitionDuration: 1
+  lootSound: {fileID: 8300000, guid: dbc5b24f673848d47b7e6d71a71b9802, type: 3}
 --- !u!1001 &1391716256788798860
 PrefabInstance:
   m_ObjectHideFlags: 0

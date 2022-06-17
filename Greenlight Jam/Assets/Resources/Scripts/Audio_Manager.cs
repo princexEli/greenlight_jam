@@ -9,7 +9,7 @@ public class Audio_Manager : MonoBehaviour
     AudioSource[] musics;
     int currMusic = 1;
 
-    AudioMixer mixer;
+    public AudioMixer mixer;
     AudioClip indoor_theme, hive_theme, map_theme, menu_theme, summary_theme;
     private static float volume = 10;
 
@@ -38,11 +38,13 @@ public class Audio_Manager : MonoBehaviour
         GameObject temp =new GameObject("Music1");
         temp.transform.parent = gameObject.transform;
         musics[0] = temp.AddComponent<AudioSource>();
+        musics[0].volume = 0.05f;
         musics[0].outputAudioMixerGroup = mixer.FindMatchingGroups("Music1")[0];
         
         temp = new GameObject("Music2");
         temp.transform.parent = gameObject.transform;
         musics[1] = temp.AddComponent<AudioSource>();
+        musics[1].volume = 0.05f;
         musics[1].outputAudioMixerGroup = mixer.FindMatchingGroups("Music2")[0];
         
         swapTheme();

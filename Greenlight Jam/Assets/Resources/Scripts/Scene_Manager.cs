@@ -75,8 +75,6 @@ public class Scene_Manager : MonoBehaviour
 
 		Button button = GameObject.Find("Continue Button").gameObject.GetComponent<Button>();
 		button.onClick.AddListener(delegate () { pause_OnContinueClick(); });
-		button = GameObject.Find("Main Menu Button").gameObject.GetComponent<Button>();
-		button.onClick.AddListener(delegate () { pause_OnMainMenuClick(); });
 		button = GameObject.Find("Quit Button").gameObject.GetComponent<Button>();
 		button.onClick.AddListener(delegate () { pause_OnQuitClick(); });
 
@@ -96,10 +94,6 @@ public class Scene_Manager : MonoBehaviour
 		}
 		pauseMenu.SetActive(isPaused);
 		isoMenu.SetActive(!isPaused);
-	}
-	public void pause_OnMainMenuClick()
-	{
-		Helper.changeScene(Helper.MENU);
 	}
 	public void pause_OnQuitClick()
 	{
@@ -124,7 +118,13 @@ public class Scene_Manager : MonoBehaviour
 	#region Summary
 	private void LoadSummary()
 	{
+		Button button = GameObject.Find("Continue Button").gameObject.GetComponent<Button>();
+		button.onClick.AddListener(delegate () { summary_OnContinueClick(); });
+	}
 
+	private void summary_OnContinueClick()
+	{
+		Helper.changeScene(Helper.HIVE);
 	}
 	#endregion
 }
