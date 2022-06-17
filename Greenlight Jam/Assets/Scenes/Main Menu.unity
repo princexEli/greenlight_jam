@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minLoot: 1
+  lootSound: {fileID: 8300000, guid: 6e73c65aa373f7640a152c5e9c3282e6, type: 3}
   maxComponents: 3
   maxLootType: 5
   lootTypes:
@@ -293,9 +294,9 @@ MonoBehaviour:
   - Trinket(s)
   unlockedMissions: 2
   unlockedUpgrades: 0
-  startingInventorySize: 5
+  startingInventorySize: 6
   transitionDuration: 1
-  lootSound: {fileID: 8300000, guid: dbc5b24f673848d47b7e6d71a71b9802, type: 3}
+  defaultVol: 0.015
 --- !u!1001 &1391716256788798860
 PrefabInstance:
   m_ObjectHideFlags: 0
