@@ -16,7 +16,7 @@ public class Loot : MonoBehaviour
 
 	bool isLooted = false;
 	Dictionary<string, int> loot;
-
+	AudioSource sound;
 	private void Awake()
 	{
 		highlight = gameObject.AddComponent<Outline>();
@@ -24,6 +24,16 @@ public class Loot : MonoBehaviour
 		tag = "Lootable";
 		gameObject.layer = LayerMask.NameToLayer("Lootable");
 		loot = new Dictionary<string, int>();
+		setupSound();
+	}
+
+	private void setupSound()
+	{
+		sound = gameObject.AddComponent<AudioSource>();
+		sound.clip = Game_Manager.Instance.lootSound;
+		sound.outputAudioMixerGroup = Game_Manager.Instance.audio.mixer.FindMatchingGroups("Sound Effects")[0];
+		sound.playOnAwake = false;
+		sound.volume = Game_Manager.Instance.defaultVol;
 	}
 
 	private void Start()
@@ -48,6 +58,7 @@ public class Loot : MonoBehaviour
 			}
 		}
 
+		sound.Play();
 		Update_Panel.Instance.addLines(temp);
 	}
 

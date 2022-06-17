@@ -203,7 +203,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1314520631514921128}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickContinue
         m_Mode: 1
         m_Arguments:
@@ -1818,7 +1818,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1314520631514921126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0956ef76937df1148ad1a465043168a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 42497b1b2542dcc4687ae66729c34369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1420590438841746763

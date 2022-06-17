@@ -257,6 +257,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map1
       objectReference: {fileID: 0}
+    - target: {fileID: 1933715530676297459, guid: 53915d31bfb38784bb23bf149ed4aa80,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310833197004127775, guid: 53915d31bfb38784bb23bf149ed4aa80,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6310833197569366004, guid: 53915d31bfb38784bb23bf149ed4aa80,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6782983329205879840, guid: 53915d31bfb38784bb23bf149ed4aa80, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 53915d31bfb38784bb23bf149ed4aa80, type: 3}

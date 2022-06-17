@@ -295,6 +295,7 @@ MonoBehaviour:
   unlockedUpgrades: 0
   startingInventorySize: 5
   transitionDuration: 1
+  lootSound: {fileID: 8300000, guid: dbc5b24f673848d47b7e6d71a71b9802, type: 3}
 --- !u!1001 &1391716256788798860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -417,6 +418,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1391716255659148452, guid: 5ce2bc986dc10ef45b108968ab433635,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1391716255851040505, guid: 5ce2bc986dc10ef45b108968ab433635,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -455,18 +461,13 @@ PrefabInstance:
     - target: {fileID: 1391716255954502793, guid: 5ce2bc986dc10ef45b108968ab433635,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1391716255954502793, guid: 5ce2bc986dc10ef45b108968ab433635,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1391716255954502793, guid: 5ce2bc986dc10ef45b108968ab433635,
-        type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 140147294865684246}
     - target: {fileID: 1391716255954502793, guid: 5ce2bc986dc10ef45b108968ab433635,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -494,4 +495,5 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1391716256146061882, guid: 5ce2bc986dc10ef45b108968ab433635, type: 3}
+    - {fileID: 3511248514130915707, guid: 5ce2bc986dc10ef45b108968ab433635, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5ce2bc986dc10ef45b108968ab433635, type: 3}

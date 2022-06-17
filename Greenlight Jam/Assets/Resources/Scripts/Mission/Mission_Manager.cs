@@ -35,7 +35,7 @@ public class Mission_Manager : Data_Manager
     public override void attachHosts(GameObject[] hosts)
 	{
         missionPos = 0;
-        if (activeCount != 0)
+        if (activeCount != 0 && Helper.SceneType() != Helper.MENU)
         {
             LoadActive(hosts);
         }
@@ -58,15 +58,7 @@ public class Mission_Manager : Data_Manager
     {  
         for (int i = 0; i < activeCount; i++)
         {
-            bool isFirst = false;
-            if (i == 0)
-            {
-                isFirst = true;
-            }
-
-            Mission temp = new Mission();
-            temp.Initalize(isFirst);
-
+            Mission temp = activeMissions.transform.GetChild(i).gameObject.GetComponent<Mission>();
             temp.addHost(hosts[i]);
             temp.Load();
 
@@ -111,6 +103,14 @@ public class Mission_Manager : Data_Manager
             missionPos ++;
         }
 
+    }
+
+    public void deleteAvailable()
+	{
+        foreach (Transform child in availableMissions.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 
 	public override void Load()

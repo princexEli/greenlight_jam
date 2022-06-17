@@ -24,9 +24,13 @@ public class Game_Manager : MonoBehaviour
         }
         set { instance = value; }
     }
-    #endregion
+	#endregion
 
+	#region Loot
+	[Header("Loot")]
     public int minLoot = 1;
+    public AudioClip lootSound;
+	#endregion
 
 	#region Mission Manager
 	Mission_Manager missionM;
@@ -81,16 +85,19 @@ public class Game_Manager : MonoBehaviour
     }
     [Header("Audio Manager")]
     public float transitionDuration;
+    public float defaultVol = 0.015f;
     #endregion
 
     private void Awake()
 	{
+        if (Game_Manager.Instance != this) Destroy(gameObject);
         setupManagers();
         DontDestroyOnLoad(this.gameObject);
     }
 
     private void setupManagers()
     {
+        if (missionM != null) return;
         GameObject temp = new GameObject("Mission Manager");
         temp.transform.parent = gameObject.transform;
         missionM = temp.AddComponent<Mission_Manager>();

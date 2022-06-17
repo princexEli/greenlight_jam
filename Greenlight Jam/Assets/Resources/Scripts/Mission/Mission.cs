@@ -69,9 +69,13 @@ public class Mission : Data
 		updateButtonName();
 	}
 
-	public void updateButtonName()
+	public override void loadSummary()
 	{
-		TextMeshProUGUI tmpro =button.gameObject.transform.GetComponentInChildren<TextMeshProUGUI>();
+		loadHive();
+	}
+
+	private void hiveButtons(TextMeshProUGUI tmpro)
+	{
 		if (isRequired)
 		{
 			tmpro.text = "Required";
@@ -89,6 +93,34 @@ public class Mission : Data
 		else
 		{
 			tmpro.text = "Turn In";
+		}
+	}
+
+	private void summaryButtons(TextMeshProUGUI tmpro)
+	{
+		if (!isComplete)
+		{
+			tmpro.text = "In Progress";
+			button.interactable = false;
+		}
+		else
+		{
+			tmpro.text = "Turn In";
+		}
+	}
+
+	public void updateButtonName()
+	{
+		TextMeshProUGUI tmpro =button.gameObject.transform.GetComponentInChildren<TextMeshProUGUI>();
+
+		string type = Helper.SceneType();
+		if (type == Helper.HIVE)
+		{
+			hiveButtons(tmpro);
+		}
+		else if(type == Helper.SUMMARY)
+		{
+			summaryButtons(tmpro);
 		}
 	}
 
