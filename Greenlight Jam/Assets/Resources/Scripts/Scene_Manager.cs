@@ -24,44 +24,66 @@ public class Scene_Manager : MonoBehaviour
 		switch (type)
 		{
 			case Helper.MENU:
-				volumeSlider = gameObject.transform.GetComponentInChildren<Slider>();
-				volumeSlider.onValueChanged.AddListener(delegate { Game_Manager.Instance.audio.updateVolume(volumeSlider.value); });
+				LoadMenu();
 				break;
-			case Helper.HIVE: break;
+			case Helper.HIVE:
+				LoadHive();
+				break;
 			case Helper.MAP:
 			case Helper.PAUSE:
-				isoMenu = GameObject.Find("Iso UI");
-				pauseMenu = GameObject.Find("Pause UI");
-				pauseMenu.SetActive(isPaused);
+				LoadPause();
+				break;
+			case Helper.SUMMARY:
+				LoadSummary();
 				break;
 		}
 	}
 	
-
 	private void Update()
 	{
 		if (Input.GetKeyUp(KeyCode.Escape))
 		{
-			if (type == Helper.HIVE || type ==Helper.MENU)
+			if (type == Helper.HIVE || type == Helper.MENU || type == Helper.SUMMARY)
 			{
 				Helper.ExitGame();
 			}
 			else
 			{
-				OnContinueClick();
+				pause_OnContinueClick();
 			}
 		}
 	}
 
 	#region Hive
-	public void onDiveButtonClick()
+	private void LoadHive()
 	{
+		Button button = GameObject.Find("Launch Button").gameObject.GetComponent<Button>();
+		button.onClick.AddListener(delegate () { hive_onDiveButtonClick(); });
+	}
+	public void hive_onDiveButtonClick()
+	{
+		Game_Manager.Instance.mission.deleteAvailable();
 		Helper.changeScene(Helper.MAP);
 	}
 	#endregion
 
 	#region Pause Menu
-	public void OnContinueClick()
+	private void LoadPause()
+	{
+		isoMenu = GameObject.Find("Iso UI");
+		pauseMenu = GameObject.Find("Pause UI");
+
+		Button button = GameObject.Find("Continue Button").gameObject.GetComponent<Button>();
+		button.onClick.AddListener(delegate () { pause_OnContinueClick(); });
+		button = GameObject.Find("Main Menu Button").gameObject.GetComponent<Button>();
+		button.onClick.AddListener(delegate () { pause_OnMainMenuClick(); });
+		button = GameObject.Find("Quit Button").gameObject.GetComponent<Button>();
+		button.onClick.AddListener(delegate () { pause_OnQuitClick(); });
+
+
+		pauseMenu.SetActive(isPaused);
+	}
+	public void pause_OnContinueClick()
 	{
 		isPaused = !isPaused;
 		if (!isPaused)
@@ -75,20 +97,34 @@ public class Scene_Manager : MonoBehaviour
 		pauseMenu.SetActive(isPaused);
 		isoMenu.SetActive(!isPaused);
 	}
-	public void OnMainMenuClick()
+	public void pause_OnMainMenuClick()
 	{
 		Helper.changeScene(Helper.MENU);
 	}
-	public void OnQuitClick()
+	public void pause_OnQuitClick()
 	{
 		Helper.ExitGame();
 	}
 	#endregion
 
 	#region Main Menu
+	private void LoadMenu()
+	{
+		volumeSlider = gameObject.transform.GetComponentInChildren<Slider>();
+		volumeSlider.onValueChanged.AddListener(delegate { Game_Manager.Instance.audio.updateVolume(volumeSlider.value); });
+		Button button = GameObject.Find("Play Button").gameObject.GetComponent<Button>();
+		button.onClick.AddListener(delegate () { mainMenu_onPlayClicked(); });
+	}
 	public void mainMenu_onPlayClicked()
 	{
 		Helper.changeScene("Hive");
+	}
+	#endregion
+
+	#region Summary
+	private void LoadSummary()
+	{
+
 	}
 	#endregion
 }

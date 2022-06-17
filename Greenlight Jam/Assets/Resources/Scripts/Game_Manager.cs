@@ -85,12 +85,14 @@ public class Game_Manager : MonoBehaviour
 
     private void Awake()
 	{
+        if (Game_Manager.Instance != this) Destroy(gameObject);
         setupManagers();
         DontDestroyOnLoad(this.gameObject);
     }
 
     private void setupManagers()
     {
+        if (missionM != null) return;
         GameObject temp = new GameObject("Mission Manager");
         temp.transform.parent = gameObject.transform;
         missionM = temp.AddComponent<Mission_Manager>();
