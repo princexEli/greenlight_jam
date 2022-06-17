@@ -111,8 +111,8 @@ public class Game_Manager : MonoBehaviour
     public void Load()
 	{
         audioM.swapTheme();
-        inventoryM.Load();
-        missionM.Load();
+        inventoryM.BeginLoad();
+        missionM.BeginLoad();
         upgradeM.LoadHive();
     }
 

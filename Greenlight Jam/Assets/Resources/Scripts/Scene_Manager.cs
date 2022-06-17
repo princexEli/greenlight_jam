@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Scene_Manager : MonoBehaviour
 {
 	Game_Manager manager;
 	GameObject pauseMenu, isoMenu;
+	Slider volumeSlider;
 	string type;
 	bool isPaused = false;
 
@@ -13,15 +15,18 @@ public class Scene_Manager : MonoBehaviour
 	{
 		manager = Game_Manager.Instance;
 		type = Helper.SceneType();
-		Load();
 		manager.Load();
-		
+		Load();
 	}
 
 	private void Load()
 	{
 		switch (type)
 		{
+			case Helper.MENU:
+				volumeSlider = gameObject.transform.GetComponentInChildren<Slider>();
+				volumeSlider.onValueChanged.AddListener(delegate { Game_Manager.Instance.audio.updateVolume(volumeSlider.value); });
+				break;
 			case Helper.HIVE: break;
 			case Helper.MAP:
 			case Helper.PAUSE:
@@ -37,7 +42,7 @@ public class Scene_Manager : MonoBehaviour
 	{
 		if (Input.GetKeyUp(KeyCode.Escape))
 		{
-			if (type == Helper.HIVE)
+			if (type == Helper.HIVE || type ==Helper.MENU)
 			{
 				Helper.ExitGame();
 			}
@@ -77,6 +82,13 @@ public class Scene_Manager : MonoBehaviour
 	public void OnQuitClick()
 	{
 		Helper.ExitGame();
+	}
+	#endregion
+
+	#region Main Menu
+	public void mainMenu_onPlayClicked()
+	{
+		Helper.changeScene("Hive");
 	}
 	#endregion
 }

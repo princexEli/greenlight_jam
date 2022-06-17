@@ -19,6 +19,7 @@ TagManager:
   - Empty
   - Awarness
   - Level
+  - Teleport
   layers:
   - Default
   - TransparentFX

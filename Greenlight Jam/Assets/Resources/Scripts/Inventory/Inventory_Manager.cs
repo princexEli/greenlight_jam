@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +28,9 @@ public class Inventory_Manager : Data_Manager
 	//Called on Scene Change
 	public override void attachHosts(GameObject[] hosts)
 	{
-		for(int i = 0; i < slots.Count; i++)
+		if (Helper.SceneType() == Helper.MENU) return;
+		if(hosts.Length == 0) Debug.LogError("No hosts found for inventory slots.");
+		for (int i = 0; i < slots.Count; i++)
 		{
 			slots[i].addHost(hosts[i]);
 			slots[i].Load();
