@@ -33,7 +33,6 @@ public class Loot : MonoBehaviour
 		sound.clip = Game_Manager.Instance.lootSound;
 		sound.outputAudioMixerGroup = Game_Manager.Instance.audio.mixer.FindMatchingGroups("Sound Effects")[0];
 		sound.playOnAwake = false;
-		sound.volume = Game_Manager.Instance.defaultVol;
 	}
 
 	private void Start()

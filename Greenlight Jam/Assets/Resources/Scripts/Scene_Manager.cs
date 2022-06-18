@@ -7,7 +7,6 @@ public class Scene_Manager : MonoBehaviour
 {
 	Game_Manager manager;
 	GameObject pauseMenu, isoMenu;
-	Slider volumeSlider;
 	string type;
 	bool isPaused = false;
 
@@ -104,8 +103,6 @@ public class Scene_Manager : MonoBehaviour
 	#region Main Menu
 	private void LoadMenu()
 	{
-		volumeSlider = gameObject.transform.GetComponentInChildren<Slider>();
-		volumeSlider.onValueChanged.AddListener(delegate { Game_Manager.Instance.audio.updateVolume(volumeSlider.value); });
 		Button button = GameObject.Find("Play Button").gameObject.GetComponent<Button>();
 		button.onClick.AddListener(delegate () { mainMenu_onPlayClicked(); });
 	}

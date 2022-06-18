@@ -2,23 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class Audio_Manager : MonoBehaviour
 {
-    Game_Manager manager;
-    AudioSource[] musics;
-    int currMusic = 1;
+    AudioSource music;
 
     public AudioMixer mixer;
     AudioClip indoor_theme, hive_theme, map_theme, menu_theme, summary_theme;
-    private static float volume = 10;
+    Slider masterSlider, musicSlider, effectsSlider;
+    Dictionary<string, float> volumes;
 
     private void Awake()
     {
-        manager = Game_Manager.Instance;
         mixer = Resources.Load("Sound/MusicMixer") as AudioMixer;
+        setupVolumes();
         getThemes();
         setupMusic();
+    }
+
+    private void setupVolumes()
+	{
+        volumes = new Dictionary<string, float>();
+        volumes.Add("Master", 1);
+        volumes.Add("Music", 1);
+        volumes.Add("Effects", 1);
     }
 
     private void getThemes()
@@ -33,27 +41,47 @@ public class Audio_Manager : MonoBehaviour
     private void setupMusic()
     {
         mixer = Resources.Load("Sound/MusicMixer") as AudioMixer;
-        musics = new AudioSource[2];
+        music = new AudioSource();
 
-        GameObject temp =new GameObject("Music1");
+        GameObject temp =new GameObject("Music");
         temp.transform.parent = gameObject.transform;
-        musics[0] = temp.AddComponent<AudioSource>();
-        musics[0].volume = 0.05f;
-        musics[0].outputAudioMixerGroup = mixer.FindMatchingGroups("Music1")[0];
-        
-        temp = new GameObject("Music2");
-        temp.transform.parent = gameObject.transform;
-        musics[1] = temp.AddComponent<AudioSource>();
-        musics[1].volume = 0.05f;
-        musics[1].outputAudioMixerGroup = mixer.FindMatchingGroups("Music2")[0];
-        
+        music = temp.AddComponent<AudioSource>();
+        music.outputAudioMixerGroup = mixer.FindMatchingGroups("Music")[0];
+    }
+
+    private void setupSliders()
+	{
+        masterSlider = GameObject.Find("Master Slider").gameObject.GetComponentInChildren<Slider>();
+        masterSlider.value = volumes["Master"];
+        masterSlider.onValueChanged.AddListener(delegate { updateVolume(masterSlider.value, "Master"); });
+        musicSlider = GameObject.Find("Music Slider").gameObject.GetComponentInChildren<Slider>();
+        musicSlider.value = volumes["Music"];
+        musicSlider.onValueChanged.AddListener(delegate { updateVolume(musicSlider.value, "Music"); });
+        effectsSlider = GameObject.Find("Effects Slider").gameObject.GetComponentInChildren<Slider>();
+        effectsSlider.value = volumes["Effects"];
+        effectsSlider.onValueChanged.AddListener(delegate { updateVolume(effectsSlider.value, "Effects"); });
+    }
+
+    public void Load()
+	{
+        string type = Helper.SceneType();
+        if (type == Helper.MENU || type == Helper.PAUSE || type == Helper.MAP)
+        {
+            setupSliders();
+        }
         swapTheme();
     }
 
-    public void updateVolume(float val)
+    public float Volume(float val)
+	{
+        return Mathf.Log10(val) * 20;
+    }
+
+    public void updateVolume(float val, string mixerGroup)
     {
-        volume = val;
-        mixer.SetFloat("MasterVolume", val);
+        volumes[mixerGroup] = val;
+        float vol = Volume(val);
+        mixer.SetFloat(mixerGroup, vol);
     }
 
     private AudioClip getSceneMusic()
@@ -75,26 +103,12 @@ public class Audio_Manager : MonoBehaviour
 
     public void swapTheme()
     {
-        AudioClip music = getSceneMusic();
-        float vol1 = volume, vol2 = volume;
-		if (currMusic==0)
-		{
-            if (musics[1].clip == music) return;
-            musics[1].clip = music;
-            vol1 = -80;
-            currMusic = 1;
-		}
-		else
-		{
-            if (musics[0].clip == music) return;
-            musics[0].clip = music;
-            vol2 = -80;
-            currMusic = 0;
-		}
+        AudioClip clip = getSceneMusic();
+        if (music == clip) return;
 
-        StartCoroutine(FadeMixerGroup.StartFade(mixer, "Music1Volume", manager.transitionDuration, vol1));
-        StartCoroutine(FadeMixerGroup.StartFade(mixer, "Music2Volume", manager.transitionDuration, vol2));
-        musics[0].Play();
-        musics[1].Play();
+        float vol = Volume(volumes["Music"]);
+        music.clip = clip;
+        mixer.SetFloat("Music", vol);
+        music.Play();
     }
 }

@@ -85,7 +85,6 @@ public class Game_Manager : MonoBehaviour
     }
     [Header("Audio Manager")]
     public float transitionDuration;
-    public float defaultVol = 0.015f;
     #endregion
 
     private void Awake()
@@ -117,14 +116,9 @@ public class Game_Manager : MonoBehaviour
 
     public void Load()
 	{
-        audioM.swapTheme();
+        audioM.Load();
         inventoryM.BeginLoad();
         missionM.BeginLoad();
         upgradeM.LoadHive();
     }
-
-    public void updateVolume(float val)
-	{
-        audioM.updateVolume(val);
-	}
 }
