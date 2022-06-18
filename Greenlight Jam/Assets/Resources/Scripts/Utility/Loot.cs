@@ -96,7 +96,6 @@ public class Loot : MonoBehaviour
 
 	public void interact()
 	{
-		Debug.Log("Looting "+name);
 		if (isLooted) return;
 		obtainLoot();
 		isLooted = true;
