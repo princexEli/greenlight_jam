@@ -24,7 +24,9 @@ public class Game_Manager : MonoBehaviour
         }
         set { instance = value; }
     }
-	#endregion
+    #endregion
+
+    public Material skybox;
 
 	#region Loot
 	[Header("Loot")]
@@ -129,6 +131,8 @@ public class Game_Manager : MonoBehaviour
 
     public void Load()
 	{
+        RenderSettings.skybox = skybox;
+        DynamicGI.UpdateEnvironment();
         audioM.Load();
         inventoryM.BeginLoad();
         missionM.BeginLoad();
