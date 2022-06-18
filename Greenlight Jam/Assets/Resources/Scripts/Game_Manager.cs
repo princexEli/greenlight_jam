@@ -30,6 +30,7 @@ public class Game_Manager : MonoBehaviour
 	[Header("Loot")]
     public int minLoot = 1;
     public AudioClip lootSound;
+    GameObject lootable, looted;
 	#endregion
 
 	#region Mission Manager
@@ -112,6 +113,18 @@ public class Game_Manager : MonoBehaviour
         temp = new GameObject("Audio Manager");
         temp.transform.parent = gameObject.transform;
         audioM = temp.AddComponent<Audio_Manager>();
+    }
+
+    private void createLoot()
+	{
+        foreach (Transform child in lootable.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        foreach (Transform child in looted.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 
     public void Load()

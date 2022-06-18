@@ -37,12 +37,13 @@ public class Character_Manager : MonoBehaviour
     bool canLoot = false;
     bool canExit = false;
     Exit exit;
-    Loot lootObj;
+    List<Loot> lootObjs;
 
 
     // Start is called before the first frame update
     void Awake()
     {
+        lootObjs = new List<Loot>();
         if (Helper.SceneType() == "Pause")
             isIso = true;
 		if (isIso) 
@@ -62,9 +63,18 @@ public class Character_Manager : MonoBehaviour
 
     void Update()
 	{
-        if (canLoot && lootObj != null && Input.GetButtonDown("Interact"))
+        if (canLoot && lootObjs.Count > 0 && Input.GetButtonDown("Interact"))
 		{
-            lootObj.interact();
+            List<Loot> toRemove = new List<Loot>();
+            foreach(Loot l in lootObjs)
+			{
+                l.interact();
+                toRemove.Add(l);
+            }
+            foreach(Loot l in toRemove)
+			{
+                lootObjs.Remove(l);
+			}
 		}
         else if(canExit && Input.GetButtonDown("Interact"))
 		{
@@ -115,8 +125,9 @@ public class Character_Manager : MonoBehaviour
         if (other.tag == "Lootable")
         {
             canLoot = true;
-            lootObj = other.gameObject.GetComponent<Loot>();
-            lootObj.Highlight(true);
+            Loot temp = other.gameObject.GetComponent<Loot>();
+            lootObjs.Add(temp);
+            temp.Highlight(true);
         }else if (other.tag == "Level")
 		{
             rb.velocity = Vector3.zero;
@@ -131,7 +142,7 @@ public class Character_Manager : MonoBehaviour
     {
         if(other.tag == "Lootable")
 		{
-            cancelHighlight();
+            cancelHighlight(other.gameObject.GetComponent<Loot>());
             canLoot = false;
 		}
         else if (other.tag == "EntranceExit")
@@ -141,11 +152,11 @@ public class Character_Manager : MonoBehaviour
         }
     }
 
-    public void cancelHighlight()
+    public void cancelHighlight(Loot l)
 	{
-        if (lootObj == null) return;
-        lootObj.Highlight(false);
-        lootObj = null;
+        if (!lootObjs.Contains(l)) return;
+        l.Highlight(false);
+        lootObjs.Remove(l);
     }
 
     public void cancelExit()
