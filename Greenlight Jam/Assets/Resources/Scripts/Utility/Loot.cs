@@ -11,7 +11,7 @@ public class Loot : MonoBehaviour
 	public bool isUnique = false;
 	
 	[Header("Possible Loot")]
-	public int minItems = 0, maxItems = 5;
+	int minItems = 0, maxItems = 5;
 	Outline highlight;
 
 	bool isLooted = false;
@@ -38,6 +38,16 @@ public class Loot : MonoBehaviour
 	private void Start()
 	{
 		highlight.enabled = false;
+		GameObject parent = GameObject.Find("Lootables");
+		if(parent == null)
+		{
+			GameObject tempParent = new GameObject("Loot");
+			parent = new GameObject("Lootables");
+			parent.transform.parent = tempParent.transform;
+			GameObject temp = new GameObject("Looted");
+			temp.transform.parent = tempParent.transform;
+		}
+		gameObject.transform.parent = parent.transform;
 	}
 
 	public void obtainLoot()
@@ -65,7 +75,7 @@ public class Loot : MonoBehaviour
 	{
 		if (isUnique) return;
 
-		for (int i = 0; i < Helper.randomNum(minItems, maxItems); i++)
+		for (int i = 0; i < Helper.randomNum(Game_Manager.Instance.minLoot, maxItems); i++)
 		{
 			string temp = Helper.randomItem();
 			if (loot.ContainsKey(temp))
@@ -86,11 +96,13 @@ public class Loot : MonoBehaviour
 
 	public void interact()
 	{
+		Debug.Log("Looting "+name);
 		if (isLooted) return;
 		obtainLoot();
 		isLooted = true;
 		tag = "Empty";
-		Character_Manager.Instance.cancelHighlight();
+		Destroy(gameObject.GetComponent<Outline>());
+		gameObject.transform.parent = GameObject.Find("Looted").transform;
 	}
 
 	internal void Highlight(bool isActive)

@@ -77,7 +77,6 @@ public class Scene_Manager : MonoBehaviour
 		button = GameObject.Find("Quit Button").gameObject.GetComponent<Button>();
 		button.onClick.AddListener(delegate () { pause_OnQuitClick(); });
 
-
 		pauseMenu.SetActive(isPaused);
 	}
 	public void pause_OnContinueClick()
