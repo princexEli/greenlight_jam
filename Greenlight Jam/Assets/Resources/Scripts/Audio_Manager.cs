@@ -35,7 +35,7 @@ public class Audio_Manager : MonoBehaviour
         map_theme = Resources.Load("Sound/Map_Theme") as AudioClip;
         menu_theme = Resources.Load("Sound/Menu_Theme") as AudioClip;
         summary_theme = Resources.Load("Sound/Menu_Theme") as AudioClip;
-        indoor_theme = Resources.Load("Sound/Map_Theme") as AudioClip;
+        indoor_theme = Resources.Load("Sound/Indoor_Theme") as AudioClip;
     }
 
     private void setupMusic()
