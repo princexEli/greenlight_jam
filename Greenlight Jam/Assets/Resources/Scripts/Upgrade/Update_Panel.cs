@@ -31,7 +31,8 @@ public class Update_Panel : MonoBehaviour
 
     void Awake()
 	{
-        tmp = GetComponent<TextMeshProUGUI>();
+        if (Helper.SceneType() != Helper.PAUSE) Destroy(gameObject);
+        tmp = GetComponentInChildren<TextMeshProUGUI>();
         origColor = tmp.color;
 	}
     void Update()
