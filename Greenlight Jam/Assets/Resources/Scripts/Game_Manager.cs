@@ -27,9 +27,13 @@ public class Game_Manager : MonoBehaviour
     #endregion
 
     public Material skybox;
+    public float timeLimit = 10f;
+    public int countdown = 3;
+    public AudioClip timerSound;
+    public AudioClip countDownSound;
 
-	#region Loot
-	[Header("Loot")]
+    #region Loot
+    [Header("Loot")]
     public int minLoot = 1;
     public AudioClip lootSound;
     GameObject lootable, looted;

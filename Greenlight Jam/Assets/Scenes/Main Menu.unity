@@ -266,6 +266,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skybox: {fileID: 2100000, guid: bc9f40f3f35ed3648a46cc5ecdda2f0b, type: 2}
+  timeLimit: 10
+  countdown: 3
+  timerSound: {fileID: 8300000, guid: dbc5b24f673848d47b7e6d71a71b9802, type: 3}
+  countDownSound: {fileID: 8300000, guid: f7333989c1b7e0f45b555a7f076a95bf, type: 3}
   minLoot: 1
   lootSound: {fileID: 8300000, guid: 6e73c65aa373f7640a152c5e9c3282e6, type: 3}
   maxComponents: 3
