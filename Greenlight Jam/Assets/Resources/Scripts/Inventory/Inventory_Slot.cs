@@ -7,7 +7,8 @@ using System;
 public class Inventory_Slot : Data
 {
     [SerializeField]
-    string type;
+    public string type;
+    bool hasRan = false;
     public bool isFull
 	{
 		get
@@ -16,9 +17,21 @@ public class Inventory_Slot : Data
 		}
 	}
     [SerializeField]
-    int current = 0;
+    public int current = 0, loot=0;
+    public int hiveValue
+    {
+		get
+		{
+            return current;
+		}
+		set
+		{
+            Debug.Log(type+": " + current + " + " + value + " = " + (current + value));
+            current += value;
+            updateDisplay();
+		}
+	}
     int max;
-    int hiveValue = 0;
     TextMeshProUGUI display, before, after;
 
 	public override void awake()
@@ -29,24 +42,22 @@ public class Inventory_Slot : Data
 
 	public void initialize(int i)
 	{
-        type = Helper.items[i];
+        if(i != -1)
+		{
+            type = Helper.items[i];
+        }
+		else
+		{
+            type = "Upgrade Points: ";
+		}
+        
         gameObject.name = type + " Slot";
     }
 
 	public override void loadSummary()
 	{
-        TextMeshProUGUI displayTitle = host.transform.Find("Title").gameObject.GetComponent<TextMeshProUGUI>();
-        displayTitle.text = type;
-
-        before = host.transform.Find("Ship Before").gameObject.GetComponent<TextMeshProUGUI>();
-        before.text = hiveValue.ToString();
-
-        display = host.transform.Find("Loot Info").gameObject.GetComponent<TextMeshProUGUI>();
-        display.text = "+" + current;
-        hiveValue += current;
-
-        after = host.transform.Find("Ship After").gameObject.GetComponent<TextMeshProUGUI>();
-        after.text = hiveValue.ToString();
+        Debug.Log("a");
+        hiveValue += loot;
     }
 
 	public override void loadHive()
@@ -57,14 +68,17 @@ public class Inventory_Slot : Data
         display = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
         updateDisplay();
     }
-	
+
     public override void loadPause()
 	{
+        if (type == "Upgrade Points: ") return;
+        max = Game_Manager.Instance.upgrade.max(type);
         TextMeshProUGUI displayTitle = host.transform.Find("Title").gameObject.GetComponent<TextMeshProUGUI>();
         displayTitle.text = type;
 
         display = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
         updateDisplay();
+        hasRan = false;
     }
 
     public List<string> AddToCurrent(int value)
@@ -93,7 +107,7 @@ public class Inventory_Slot : Data
         return temp;
     }
 
-    private void updateDisplay(){
+    public void updateDisplay(){
         if (Helper.SceneType() == "Hive")
 		{
             display.text = hiveValue.ToString();

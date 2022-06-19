@@ -513,7 +513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.199997, y: 128.7}
+  m_AnchoredPosition: {x: -1.2000122, y: 128.7}
   m_SizeDelta: {x: -202.36877, y: -319.42645}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1756081313751634996
@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -565,6 +565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd731a289521f04c967458fef2e20c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  host: {fileID: 0}
+  type: 
+  current: 0
 --- !u!1 &9084426462747660147
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,8 +641,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

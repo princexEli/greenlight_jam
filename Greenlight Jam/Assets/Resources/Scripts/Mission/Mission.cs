@@ -4,66 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Mission : Data
 {
-	List<Mission_Component> components;
 	public string ComponentsText
 	{
 		get
 		{
-			string Title = "";
-			if (components.Count == 0) return "";
-			foreach (Mission_Component comp in components)
-			{
-				string part = comp.title;
-				if (Title != "")
-				{
-					Title += "\\n";
-				}
-				Title += part;
-			}
-			Title = Title.Replace("\\n", "\n");
-			return Title;
+			return "Collect " + needed + " " + type;
 		}
 	}
-	bool isRequired, isTaken;
+	string type;
 	Button button;
-	TextMeshProUGUI info;
-	bool isComplete
-	{
-		get
-		{
-			foreach (Mission_Component c in components)
-			{
-				if (!c.isComplete)
-					return false;
-			}
-			return true;
-		}
-	}
+	Inventory_Slot slot;
+	int needed = 1;
 
+	TextMeshProUGUI info;
 	public override void awake()
 	{
 		tagName = "Mission";
-		components = new List<Mission_Component>();
 	}
 
-	public override void Initalize(bool isMain)
+	public void Setup(string name)
 	{
-		if (components == null) awake();
-		isRequired = isMain;
-		isTaken = isMain;
-
-		HashSet<string> componentItems = new HashSet<string>();
-		for (int i = 0; i < Helper.randomNum(Game_Manager.Instance.maxComponents); i++)
-		{
-			string item = Helper.randomItem(componentItems);
-			int amount = Helper.randomNum(Game_Manager.Instance.maxLootType);
-			Mission_Component c = new Mission_Component(item, amount);
-			components.Add(c);
-		}
+		type = name;
 	}
 
 	public override void loadHive()
 	{
+		if(slot ==null) slot = Game_Manager.Instance.inventory.getLoot(type);
 		button = host.transform.Find("Button").gameObject.GetComponent<Button>();
 		button.onClick.AddListener(delegate () { onButtonClick(); });
 		updateButtonName();
@@ -76,37 +42,16 @@ public class Mission : Data
 
 	private void hiveButtons(TextMeshProUGUI tmpro)
 	{
-		if (isRequired)
+		tmpro.text = slot.hiveValue + "/" + needed;
+		if (slot.hiveValue < needed)
 		{
-			tmpro.text = "Required";
-			button.interactable = false;
-		}
-		else if (!isTaken)
-		{
-			tmpro.text = "Accept";
-		}
-		else if (!isComplete)
-		{
-			tmpro.text = "In Progress";
 			button.interactable = false;
 		}
 		else
 		{
-			tmpro.text = "Turn In";
+			button.interactable = true;
 		}
-	}
-
-	private void summaryButtons(TextMeshProUGUI tmpro)
-	{
-		if (!isComplete)
-		{
-			tmpro.text = "In Progress";
-			button.interactable = false;
-		}
-		else
-		{
-			tmpro.text = "Turn In";
-		}
+			
 	}
 
 	public void updateButtonName()
@@ -118,24 +63,40 @@ public class Mission : Data
 		{
 			hiveButtons(tmpro);
 		}
-		else if(type == Helper.SUMMARY)
-		{
-			summaryButtons(tmpro);
-		}
 	}
 
 	public void onButtonClick()
 	{
-		if (!isTaken)
+		Game_Manager.Instance.inventory.points++;
+		finishGoal();
+		hiveButtons(button.GetComponentInChildren<TextMeshProUGUI>());
+		Game_Manager.Instance.upgrade.UpdateButtons();
+	}
+
+	private void finishGoal()
+	{
+		if (slot.hiveValue > needed)
+			slot.hiveValue -= needed;
+		setGoal();
+	}
+
+	public void setGoal()
+	{
+		if(needed == 1)
 		{
-			isTaken = true;
-			transform.parent = Game_Manager.Instance.mission.activeMissions.transform;
-			Game_Manager.Instance.mission.addData(this);
+			needed = 5;
 		}
-		else if (isComplete)
+		else if (needed < 50)
 		{
-			Game_Manager.Instance.mission.removeData(this);
+			needed += 10;
 		}
-		updateButtonName();
+		else if (needed < 100)
+		{
+			needed += 50;
+		}
+		else if (needed < 500)
+		{
+			needed += 1000;
+		}
 	}
 }

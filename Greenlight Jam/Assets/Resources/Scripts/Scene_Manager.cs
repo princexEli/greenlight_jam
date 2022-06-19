@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Scene_Manager : MonoBehaviour
 {
 	Game_Manager manager;
-	GameObject pauseMenu, isoMenu;
+	GameObject pauseMenu, isoMenu, summaryMenu;
 	string type;
 	bool isPaused = false;
 
@@ -32,9 +32,6 @@ public class Scene_Manager : MonoBehaviour
 			case Helper.PAUSE:
 				LoadPause();
 				break;
-			case Helper.SUMMARY:
-				LoadSummary();
-				break;
 		}
 	}
 	
@@ -56,12 +53,12 @@ public class Scene_Manager : MonoBehaviour
 	#region Hive
 	private void LoadHive()
 	{
+		Time.timeScale = 1;
 		Button button = GameObject.Find("Launch Button").gameObject.GetComponent<Button>();
 		button.onClick.AddListener(delegate () { hive_onDiveButtonClick(); });
 	}
 	public void hive_onDiveButtonClick()
 	{
-		Game_Manager.Instance.mission.deleteAvailable();
 		Helper.changeScene(Helper.MAP);
 	}
 	#endregion
@@ -71,13 +68,30 @@ public class Scene_Manager : MonoBehaviour
 	{
 		isoMenu = GameObject.Find("Iso UI");
 		pauseMenu = GameObject.Find("Pause UI");
+		summaryMenu = GameObject.Find("Summary UI");
 
 		Button button = GameObject.Find("Continue Button").gameObject.GetComponent<Button>();
 		button.onClick.AddListener(delegate () { pause_OnContinueClick(); });
 		button = GameObject.Find("Quit Button").gameObject.GetComponent<Button>();
 		button.onClick.AddListener(delegate () { pause_OnQuitClick(); });
 
+		button = GameObject.Find("Summary Button").gameObject.GetComponent<Button>();
+		button.onClick.AddListener(delegate () { summary_OnContinueClick(); });
+
 		pauseMenu.SetActive(isPaused);
+		summaryMenu.SetActive(false);
+		if(Helper.SceneType() == Helper.MAP)
+		{
+			isoMenu.SetActive(false);
+		}
+	}
+
+	public void TimesUp()
+	{
+		isoMenu.SetActive(false);
+		pauseMenu.SetActive(false);
+		summaryMenu.SetActive(true);
+		Game_Manager.Instance.inventory.updateHive();
 	}
 	public void pause_OnContinueClick()
 	{
@@ -91,7 +105,10 @@ public class Scene_Manager : MonoBehaviour
 			Time.timeScale = 0;
 		}
 		pauseMenu.SetActive(isPaused);
-		isoMenu.SetActive(!isPaused);
+		if (Helper.SceneType() != Helper.MAP)
+		{
+			isoMenu.SetActive(!isPaused);
+		}
 	}
 	public void pause_OnQuitClick()
 	{
@@ -112,12 +129,6 @@ public class Scene_Manager : MonoBehaviour
 	#endregion
 
 	#region Summary
-	private void LoadSummary()
-	{
-		Button button = GameObject.Find("Continue Button").gameObject.GetComponent<Button>();
-		button.onClick.AddListener(delegate () { summary_OnContinueClick(); });
-	}
-
 	private void summary_OnContinueClick()
 	{
 		Helper.changeScene(Helper.HIVE);

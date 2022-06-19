@@ -6,6 +6,45 @@ using UnityEngine;
 public class Inventory_Manager : Data_Manager
 {
 	List<Inventory_Slot> slots;
+	public Inventory_Slot upgradePoints;
+	internal int hiveTotal;
+
+	public int points
+	{
+		get
+		{
+			return upgradePoints.hiveValue;
+		}
+		set {
+			upgradePoints.hiveValue = value;
+			upgradePoints.updateDisplay();
+		}
+	}
+
+	public Inventory_Slot getLoot(string type)
+	{
+		foreach(Inventory_Slot slot in slots)
+		{
+			if(slot.type == type)
+			{
+				return slot;
+			}
+		}
+		return null;
+	}
+
+	public void updateHive()
+	{
+		foreach(Inventory_Slot slot in slots)
+		{
+			if(slot.type != "Upgrade Points: ")
+			{
+				slot.loadSummary();
+				slot.updateDisplay();
+			}
+		}
+	}
+
 	public override void awake()
 	{
 		slots = new List<Inventory_Slot>();
@@ -15,9 +54,14 @@ public class Inventory_Manager : Data_Manager
 	//Called once on awake
 	public override void Initalize()
 	{
+		GameObject temp = new GameObject("Upgrade Points: ");
+		temp.transform.parent = gameObject.transform;
+		upgradePoints = temp.AddComponent<Inventory_Slot>();
+		upgradePoints.initialize(-1);
+
 		for (int i = 0; i < Helper.items.Length; i++)
 		{
-			GameObject temp = new GameObject("Inventory Slot");
+			temp = new GameObject("Inventory Slot");
 			temp.transform.parent = gameObject.transform;
 			Inventory_Slot slot = temp.AddComponent<Inventory_Slot>();
 			slot.initialize(i);
@@ -35,6 +79,10 @@ public class Inventory_Manager : Data_Manager
 			slots[i].addHost(hosts[i]);
 			slots[i].Load();
 		}
+
+		GameObject points = GameObject.FindWithTag("Points");
+		upgradePoints.addHost(points);
+		upgradePoints.Load();
 	}
 
 	//For when player picks up loot

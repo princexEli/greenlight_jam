@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
 	TextMeshProUGUI displayL, displayS;
 	float timeLimit;
 	AudioSource endingSound, endSound;
-
+	Scene_Manager manager;
 	private void Awake()
 	{
 		if (Helper.SceneType() != Helper.PAUSE) Destroy(gameObject);
@@ -22,12 +22,12 @@ public class Timer : MonoBehaviour
 
 	private void Start()
 	{
-		timeLimit = Game_Manager.Instance.timeLimit;
+		timeLimit = Game_Manager.Instance.timeLimit + Game_Manager.Instance.upgrade.max("Timer");
 		countdown = Game_Manager.Instance.countdown;
+		manager = GameObject.Find("Ground UI Canvas").GetComponent<Scene_Manager>();
 	}
 
 	int countdown;
-	bool hasRan1= false, hasRan2 = false;
 	int i = 0;
 	private void Update()
 	{
@@ -37,10 +37,13 @@ public class Timer : MonoBehaviour
 		if(truncatedNum.Length>1)
 			displayS.text = truncatedNum[1];
 
-		if (timeLimit < 0)
+		else if (timeLimit < 0)
 		{
+			
 			endSound.Play();
-			Helper.changeScene(Helper.SUMMARY);
+			Time.timeScale = 0;
+			manager.TimesUp();
+			
 		}
 		else if (timeLimit < (float)countdown)
 		{

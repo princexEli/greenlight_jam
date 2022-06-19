@@ -6,115 +6,46 @@ using UnityEngine;
 
 public class Mission_Manager : Data_Manager
 {
-    int missionPos = 0;
-    public GameObject activeMissions, availableMissions;
-
-    int availableCount
-	{
-		get { return availableMissions.transform.childCount; }
-	}
-    int activeCount
-    {
-        get { return activeMissions.transform.childCount; }
-    }
+    public List<Mission> missions;
+    List<string> types;
 
     public override void awake()
 	{
+        missions = new List<Mission>();
         tagName = "Mission";
+
+        types = new List<string>();
+        for (int i = 0; i < Helper.items.Length; i++)
+        {
+            string temp = Helper.items[i];
+            types.Add(temp);
+        }
     }
 
     public override void Initalize()
     {
-        availableMissions = new GameObject("Available Missions");
-        availableMissions.transform.parent = gameObject.transform;
-
-        activeMissions = new GameObject("Active Missions");
-        activeMissions.transform.parent = gameObject.transform;
+        for(int i = 0; i < types.Count; i++)
+		{
+            GameObject temp = new GameObject("Mission");
+            Mission m = temp.AddComponent<Mission>();
+            m.transform.parent = gameObject.transform;
+            m.Setup(types[i]);
+            missions.Add(m);
+        }
     }
 
     public override void attachHosts(GameObject[] hosts)
 	{
-        missionPos = 0;
-        if (activeCount != 0 && Helper.SceneType() != Helper.MENU)
+        if (Helper.SceneType() == Helper.MENU) return;
+        for (int i = 0; i < gameObject.transform.childCount; i++)
         {
-            LoadActive(hosts);
-        }
-        if (Helper.SceneType() == "Hive")
-		{
-            CreateAvailable(hosts);
-		}
-        HideInactive(hosts);
-    }
-
-	private void HideInactive(GameObject[] hosts)
-	{
-        for (int i = missionPos; i < hosts.Length; i++)
-		{
-            hosts[i].SetActive(false);
-        }
-	}
-
-	private void LoadActive(GameObject[] hosts) 
-    {  
-        for (int i = 0; i < activeCount; i++)
-        {
-            Mission temp = activeMissions.transform.GetChild(i).gameObject.GetComponent<Mission>();
+            Mission temp =  missions[i];
             temp.addHost(hosts[i]);
             temp.Load();
 
             TextMeshProUGUI tmpro = hosts[i].GetComponentInChildren<TextMeshProUGUI>();
 
             tmpro.text = temp.ComponentsText;
-
-            missionPos++;
         }
     }
-    
-    private void CreateAvailable(GameObject[] hosts) 
-    {
-        int size = Game_Manager.Instance.unlockedMissions-activeCount;
-
-        for (int i = activeCount; i < size; i++)
-        {
-            bool isFirst = false;
-            if (i == 0)
-            {
-                isFirst = true;
-            }
-
-            GameObject temp = new GameObject("Mission");
-            if (isFirst) 
-            { 
-                temp.transform.parent = activeMissions.transform; 
-            }   
-            else { 
-                temp.transform.parent = availableMissions.transform; 
-            }
-                
-            Mission m = temp.AddComponent<Mission>();
-            m.addHost(hosts[i]);
-            m.Initalize(isFirst);
-            m.Load();
-
-            
-            TextMeshProUGUI tmpro = hosts[i].GetComponentInChildren<TextMeshProUGUI>();
-
-            tmpro.text = m.ComponentsText;
-            missionPos ++;
-        }
-
-    }
-
-    public void deleteAvailable()
-	{
-        foreach (Transform child in availableMissions.transform)
-        {
-            GameObject.Destroy(child.gameObject);
-        }
-    }
-
-	public override void Load()
-	{
-
-	}
 }

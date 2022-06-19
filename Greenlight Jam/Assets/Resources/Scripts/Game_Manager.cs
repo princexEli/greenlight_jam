@@ -140,6 +140,6 @@ public class Game_Manager : MonoBehaviour
         audioM.Load();
         inventoryM.BeginLoad();
         missionM.BeginLoad();
-        upgradeM.LoadHive();
+        upgradeM.BeginLoad();
     }
 }

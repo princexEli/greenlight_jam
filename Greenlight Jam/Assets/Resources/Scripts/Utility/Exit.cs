@@ -31,6 +31,10 @@ public class Exit : MonoBehaviour
 			}
 			
 		}
+		else
+		{
+			Destroy(gameObject);
+		}
 	}
 	private void Start()
 	{
