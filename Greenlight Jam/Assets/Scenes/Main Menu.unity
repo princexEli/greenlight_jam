@@ -319,6 +319,7 @@ MonoBehaviour:
   countdown: 3
   timerSound: {fileID: 8300000, guid: c74bf8a4ff8ecc04d85bd65f8498822b, type: 3}
   countDownSound: {fileID: 8300000, guid: 27c80f054a629cf4c93248d90f0d66f6, type: 3}
+  levelMultiplier: 1
   minLoot: 1
   lootSound: {fileID: 8300000, guid: 6e73c65aa373f7640a152c5e9c3282e6, type: 3}
   maxComponents: 3
@@ -330,7 +331,7 @@ MonoBehaviour:
   - Trinket(s)
   unlockedMissions: 2
   unlockedUpgrades: 0
-  startingInventorySize: 6
+  startingInventorySize: 5
   transitionDuration: 1
 --- !u!1001 &1391716256788798860
 PrefabInstance:

@@ -29,13 +29,18 @@ public class Inventory_Slot : Data
             updateDisplay();
 		}
 	}
-    int max;
+    int max
+	{
+		get
+		{
+            return Game_Manager.Instance.upgrade.max(type);
+        }
+	}
     TextMeshProUGUI display, before, after;
 
 	public override void awake()
 	{
         tagName = "Inventory";
-        max = Game_Manager.Instance.startingInventorySize;
 	}
 
 	public void initialize(int i)
@@ -58,10 +63,13 @@ public class Inventory_Slot : Data
         loot = 0;
     }
 
-	public override void loadHive()
+    TextMeshProUGUI maxText;
+
+    public override void loadHive()
 	{
         TextMeshProUGUI displayTitle = host.transform.Find("Title").gameObject.GetComponent<TextMeshProUGUI>();
         displayTitle.text = type;
+        maxText = host.transform.Find("Max").gameObject.GetComponent<TextMeshProUGUI>();
 
         display = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
         updateDisplay();
@@ -70,10 +78,10 @@ public class Inventory_Slot : Data
     public override void loadPause()
 	{
         if (type == "Upgrade Points: ") return;
-        max = Game_Manager.Instance.upgrade.max(type);
         TextMeshProUGUI displayTitle = host.transform.Find("Title").gameObject.GetComponent<TextMeshProUGUI>();
         displayTitle.text = type;
 
+       
         display = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
         updateDisplay();
     }
@@ -104,10 +112,16 @@ public class Inventory_Slot : Data
         return temp;
     }
 
+	public void updateMax()
+	{
+        if (maxText != null)
+            maxText.text = max.ToString();
+    }
     public void updateDisplay(){
         if (Helper.SceneType() == "Hive")
 		{
             display.text = hiveValue.ToString();
+            updateMax();
         }
         else if(Helper.SceneType() == Helper.SUMMARY)
         {

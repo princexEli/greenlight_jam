@@ -52,6 +52,8 @@ public class Upgrade : Data
 	{
 		if (points == null)
 			points = Game_Manager.Instance.inventory.upgradePoints;
+		if (slot == null)
+			slot = Game_Manager.Instance.inventory.getLoot(type);
 		displayTitle = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
 		displayTitle.text = label;
 		
@@ -67,12 +69,14 @@ public class Upgrade : Data
 		costDisplay.text = buttonCost;
 	}
 
-	Inventory_Slot points;
+	Inventory_Slot points, slot;
 	public void onButtonClick()
 	{
 		points.hiveValue -= cost;
 		Level++;
-		updateButton();
+		if(slot!=null)
+			slot.updateMax();
+		Game_Manager.Instance.upgrade.UpdateButtons();
 	}
 
 	internal void updateButton()
