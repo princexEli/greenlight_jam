@@ -31,6 +31,7 @@ public class Game_Manager : MonoBehaviour
     public int countdown = 3;
     public AudioClip timerSound;
     public AudioClip countDownSound;
+    public int levelMultiplier = 1;
 
     #region Loot
     [Header("Loot")]

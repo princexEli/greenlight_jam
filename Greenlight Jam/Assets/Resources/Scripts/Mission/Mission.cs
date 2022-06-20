@@ -29,8 +29,10 @@ public class Mission : Data
 
 	public override void loadHive()
 	{
-		if(slot ==null) slot = Game_Manager.Instance.inventory.getLoot(type);
+		if (points == null) points = Game_Manager.Instance.inventory.upgradePoints;
+		if (slot == null) slot = Game_Manager.Instance.inventory.getLoot(type);
 		button = host.transform.Find("Button").gameObject.GetComponent<Button>();
+		button.onClick.RemoveAllListeners();
 		button.onClick.AddListener(delegate () { onButtonClick(); });
 		updateButtonName();
 	}
@@ -65,9 +67,10 @@ public class Mission : Data
 		}
 	}
 
+	Inventory_Slot points;
 	public void onButtonClick()
 	{
-		Game_Manager.Instance.inventory.points++;
+		points.hiveValue++;
 		finishGoal();
 		hiveButtons(button.GetComponentInChildren<TextMeshProUGUI>());
 		Game_Manager.Instance.upgrade.UpdateButtons();

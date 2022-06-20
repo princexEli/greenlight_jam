@@ -7,7 +7,6 @@ public class Inventory_Manager : Data_Manager
 {
 	List<Inventory_Slot> slots;
 	public Inventory_Slot upgradePoints;
-	internal int hiveTotal;
 
 	public int points
 	{
@@ -16,7 +15,7 @@ public class Inventory_Manager : Data_Manager
 			return upgradePoints.hiveValue;
 		}
 		set {
-			upgradePoints.hiveValue = value;
+			upgradePoints.hiveValue += value;
 			upgradePoints.updateDisplay();
 		}
 	}

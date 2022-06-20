@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
 
 	private void Start()
 	{
-		timeLimit = Game_Manager.Instance.timeLimit + Game_Manager.Instance.upgrade.max("Timer");
+		timeLimit = Game_Manager.Instance.timeLimit + Game_Manager.Instance.upgrade.max("Timer")*Game_Manager.Instance.levelMultiplier;
 		countdown = Game_Manager.Instance.countdown;
 		manager = GameObject.Find("Ground UI Canvas").GetComponent<Scene_Manager>();
 	}

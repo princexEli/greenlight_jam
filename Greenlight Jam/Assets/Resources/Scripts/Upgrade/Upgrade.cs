@@ -12,7 +12,7 @@ public class Upgrade : Data
 	{
 		get
 		{
-			return "+5 to "+type;
+			return type +": Level "+level;
 		}
 	}
 	public string buttonCost
@@ -23,43 +23,61 @@ public class Upgrade : Data
 		}
 	}
 	public int level = 0;
+	public int Level 
+	{ 
+		get { return level; } 
+		set
+		{
+			level = value;
+			if(displayTitle != null)
+			{
+				displayTitle.text = label;
+			}
+		} 
+	}
 	Button button;
 	public int cost
 	{
 		get
 		{
-			if (level == 0) return 1;
-			return level / 5;
+			return (level / 5) + 1;
 		}
 	}
 	public void initialize(string name)
 	{
 		type = name;
 	}
-
+	TextMeshProUGUI displayTitle, costDisplay;
 	public override void loadHive()
 	{
-		TextMeshProUGUI displayTitle = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
+		if (points == null)
+			points = Game_Manager.Instance.inventory.upgradePoints;
+		displayTitle = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
 		displayTitle.text = label;
 		
 		button = host.GetComponentInChildren<Button>();
+		button.onClick.RemoveAllListeners();
 		button.onClick.AddListener(delegate () { onButtonClick(); });
-		TextMeshProUGUI costDislay = button.GetComponentInChildren<TextMeshProUGUI>();
-		costDislay.text = buttonCost;
+		costDisplay = button.GetComponentInChildren<TextMeshProUGUI>();
 		updateButton();
+	}
+
+	public void updateCostDisplay()
+	{
+		costDisplay.text = buttonCost;
 	}
 
 	Inventory_Slot points;
 	public void onButtonClick()
 	{
-		if (points == null) points = Game_Manager.Instance.inventory.upgradePoints;
 		points.hiveValue -= cost;
-		level++;
+		Level++;
 		updateButton();
 	}
 
 	internal void updateButton()
 	{
+		updateCostDisplay();
 		if (Game_Manager.Instance.inventory.points < cost)
 		{
 			button.interactable = false;

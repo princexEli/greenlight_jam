@@ -8,7 +8,6 @@ public class Inventory_Slot : Data
 {
     [SerializeField]
     public string type;
-    bool hasRan = false;
     public bool isFull
 	{
 		get
@@ -26,8 +25,7 @@ public class Inventory_Slot : Data
 		}
 		set
 		{
-            Debug.Log(type+": " + current + " + " + value + " = " + (current + value));
-            current += value;
+            current = value;
             updateDisplay();
 		}
 	}
@@ -56,8 +54,8 @@ public class Inventory_Slot : Data
 
 	public override void loadSummary()
 	{
-        Debug.Log("a");
         hiveValue += loot;
+        loot = 0;
     }
 
 	public override void loadHive()
@@ -78,16 +76,15 @@ public class Inventory_Slot : Data
 
         display = host.transform.Find("Info").gameObject.GetComponent<TextMeshProUGUI>();
         updateDisplay();
-        hasRan = false;
     }
 
     public List<string> AddToCurrent(int value)
     {
         List<string> temp = new List<string>();
-        if (current == max) return temp;
+        if (loot == max) return temp;
 
         int added = value;
-        int result = current + value;
+        int result = loot + value;
         if (result > max)
         {
             int remainder = result - max;
@@ -101,7 +98,7 @@ public class Inventory_Slot : Data
             temp.Add(type + " inventory now full");
         }
 
-        current = result;
+        loot = result;
         updateDisplay();
 
         return temp;
@@ -111,7 +108,6 @@ public class Inventory_Slot : Data
         if (Helper.SceneType() == "Hive")
 		{
             display.text = hiveValue.ToString();
-
         }
         else if(Helper.SceneType() == Helper.SUMMARY)
         {
@@ -120,7 +116,7 @@ public class Inventory_Slot : Data
         }
         else
 		{
-            display.text = current + "/" + max;
+            display.text = loot + "/" + max;
         }
     }
 }

@@ -64,6 +64,7 @@ public class Scene_Manager : MonoBehaviour
 	#endregion
 
 	#region Pause Menu
+	bool runSummary = true;
 	private void LoadPause()
 	{
 		isoMenu = GameObject.Find("Iso UI");
@@ -71,11 +72,14 @@ public class Scene_Manager : MonoBehaviour
 		summaryMenu = GameObject.Find("Summary UI");
 
 		Button button = GameObject.Find("Continue Button").gameObject.GetComponent<Button>();
+		button.onClick.RemoveAllListeners();
 		button.onClick.AddListener(delegate () { pause_OnContinueClick(); });
 		button = GameObject.Find("Quit Button").gameObject.GetComponent<Button>();
+		button.onClick.RemoveAllListeners();
 		button.onClick.AddListener(delegate () { pause_OnQuitClick(); });
 
 		button = GameObject.Find("Summary Button").gameObject.GetComponent<Button>();
+		button.onClick.RemoveAllListeners();
 		button.onClick.AddListener(delegate () { summary_OnContinueClick(); });
 
 		pauseMenu.SetActive(isPaused);
@@ -84,6 +88,7 @@ public class Scene_Manager : MonoBehaviour
 		{
 			isoMenu.SetActive(false);
 		}
+		runSummary = true;
 	}
 
 	public void TimesUp()
@@ -131,7 +136,9 @@ public class Scene_Manager : MonoBehaviour
 	#region Summary
 	private void summary_OnContinueClick()
 	{
-		Helper.changeScene(Helper.HIVE);
+		if (!runSummary) return;
+			Helper.changeScene(Helper.HIVE);
+		runSummary = false;
 	}
 	#endregion
 }

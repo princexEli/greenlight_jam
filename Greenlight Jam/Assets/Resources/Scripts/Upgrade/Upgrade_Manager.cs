@@ -86,11 +86,12 @@ public class Upgrade_Manager : Data_Manager
         }
     }
 
+    int timerLevel = 0;
 	public int max(string type)
 	{
         if (type == "Upgrade Points: ") return -1;
         int pos = types.IndexOf(type);
         Upgrade u = upgrades[pos];
-        return Game_Manager.Instance.startingInventorySize + u.level * 5;
+        return Game_Manager.Instance.startingInventorySize + u.level* Game_Manager.Instance.levelMultiplier;
 	}
 }

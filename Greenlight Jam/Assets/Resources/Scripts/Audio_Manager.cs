@@ -51,6 +51,7 @@ public class Audio_Manager : MonoBehaviour
 
     private void setupSliders()
 	{
+        if (masterSlider != null) return;
         masterSlider = GameObject.Find("Master Slider").gameObject.GetComponentInChildren<Slider>();
         masterSlider.value = volumes["Master"];
         masterSlider.onValueChanged.AddListener(delegate { updateVolume(masterSlider.value, "Master"); });
