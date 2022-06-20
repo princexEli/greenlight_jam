@@ -37,9 +37,8 @@ public class Timer : MonoBehaviour
 		if(truncatedNum.Length>1)
 			displayS.text = truncatedNum[1];
 
-		else if (timeLimit < 0)
+		if (timeLimit < 0)
 		{
-			
 			endSound.Play();
 			Time.timeScale = 0;
 			manager.TimesUp();
